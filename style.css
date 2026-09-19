@@ -71,6 +71,22 @@ button {
 }
 
 /* ==========================================================================
+   TOP SCROLL PROGRESS INDICATOR
+   ========================================================================== */
+.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, #10b981, #06b6d4, #6366f1);
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.8), 0 0 20px rgba(6, 182, 212, 0.4);
+  z-index: 100000;
+  pointer-events: none;
+  transition: width 0.08s linear;
+}
+
+/* ==========================================================================
    PRELOADER
    ========================================================================== */
 .loader {
@@ -836,7 +852,60 @@ button {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  margin-bottom: 28px;
+}
+
+/* Technical Skills Matrix */
+.skills-matrix {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   margin-bottom: 36px;
+  padding: 24px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid var(--glass-border);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.12);
+}
+
+.skill-category {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.skill-cat-title {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--accent-green);
+}
+
+.skill-pills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.skill-pills span {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 5px 12px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+  color: rgba(255, 255, 255, 0.85);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.15);
+  transition: all 0.25s var(--ease-out);
+}
+
+.skill-pills span:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: var(--glass-border-hover);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
 .lead-text {
@@ -1848,7 +1917,7 @@ button {
 }
 
 /* ==========================================================================
-   RESPONSIVE DESIGN (TABLET & MOBILE)
+   RESPONSIVE DESIGN (TABLET & MOBILE OPTIMIZED)
    ========================================================================== */
 @media (max-width: 1100px) {
   .cert-grid {
@@ -1858,15 +1927,21 @@ button {
 
 @media (max-width: 1024px) {
   .about-grid-card {
-    grid-template-columns: 320px 1fr;
+    grid-template-columns: 1fr;
     gap: 36px;
-    padding: 36px;
+    padding: 36px 28px;
+  }
+  .about-avatar-frame {
+    max-width: 300px;
+    margin: 0 auto;
   }
   .projects-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
   }
   .testimonials-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
   }
   .contact-layout {
     grid-template-columns: 1fr;
@@ -1876,62 +1951,123 @@ button {
     grid-template-columns: repeat(2, 1fr);
     gap: 36px;
   }
-  .dev-orbit-dock {
-    max-width: 90vw;
-    padding: 6px 12px;
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    width: 100%;
   }
 }
 
 @media (max-width: 768px) {
   .site-header {
-    padding: 14px 18px;
+    padding: 12px 16px;
   }
   .nav-menu {
     display: none;
   }
   .section {
-    padding: 80px 0;
+    padding: 70px 0;
+  }
+  .hero-section {
+    padding-top: 100px;
+    padding-bottom: 24px;
+  }
+  .hero-headline {
+    font-size: clamp(38px, 10vw, 68px);
+    margin-bottom: 24px;
+  }
+  .hero-meta-grid {
+    gap: 24px;
   }
   .about-grid-card {
-    grid-template-columns: 1fr;
-    gap: 36px;
-    padding: 28px 20px;
+    padding: 24px 18px;
+    gap: 28px;
+    border-radius: 20px;
   }
   .about-avatar-frame {
-    max-width: 280px;
+    max-width: 240px;
     margin: 0 auto;
   }
-  .service-item {
-    padding: 28px 24px;
-    flex-direction: column;
-    gap: 16px;
+  .lead-text {
+    font-size: 16px;
+    line-height: 1.5;
   }
-  .testimonials-grid {
+  .sub-text {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .skills-matrix {
+    padding: 18px 14px;
+    gap: 14px;
+  }
+  .skill-pills span {
+    font-size: 10px;
+    padding: 4px 10px;
+  }
+  .about-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 24px;
+  }
+  .about-actions {
+    justify-content: flex-start;
+  }
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    width: 100%;
+  }
+  .stat-number {
+    font-size: 26px;
+  }
+  .projects-grid {
     grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .project-thumb-wrap {
+    height: 190px;
+  }
+  .project-body {
+    padding: 24px 18px;
+  }
+  .service-item {
+    padding: 24px 18px;
+    flex-direction: column;
+    gap: 14px;
   }
   .cert-grid {
     grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .cert-thumb-wrap {
+    height: 170px;
+  }
+  .cert-body {
+    padding: 22px 18px;
+  }
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .testimonial-card {
+    padding: 24px 18px;
   }
   .contact-form {
-    padding: 28px 20px;
+    padding: 24px 18px;
+    gap: 18px;
   }
   .form-row {
     grid-template-columns: 1fr;
+    gap: 14px;
   }
   .site-footer {
     grid-template-columns: 1fr;
     gap: 32px;
+    padding: 36px 0 48px;
   }
-  .stats-row {
-    gap: 24px;
-    flex-wrap: wrap;
-  }
-  .dev-orbit-dock {
-    bottom: 12px;
-    gap: 8px;
-    padding: 6px 10px;
-  }
-  .dev-orbit-label {
-    display: none;
+  .footer-hero-brand {
+    padding: 40px 0 10px;
   }
 }

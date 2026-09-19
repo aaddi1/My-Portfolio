@@ -10,6 +10,7 @@ const loader = document.getElementById('loader');
 const loaderPercent = document.getElementById('loader-percent');
 const loaderBar = document.getElementById('loader-bar');
 const siteHeader = document.querySelector('.site-header');
+const scrollProgressBar = document.getElementById('scroll-progress-bar');
 
 // Modal Elements
 const certModal = document.getElementById('cert-modal');
@@ -45,7 +46,7 @@ try {
     gestureOrientation: 'vertical',
     smoothWheel: true,
     wheelMultiplier: 1.0,
-    touchMultiplier: 1.2,
+    touchMultiplier: 1.5,
     syncTouch: true,
   });
 } catch (err) {
@@ -243,6 +244,11 @@ function render(time) {
     progress = Math.max(0, Math.min(1, lenis.progress));
   } else if (maxScroll > 0) {
     progress = Math.max(0, Math.min(1, window.scrollY / maxScroll));
+  }
+
+  // Update top scroll progress bar
+  if (scrollProgressBar) {
+    scrollProgressBar.style.width = `${progress * 100}%`;
   }
 
   targetFrame = 1 + progress * (TOTAL_FRAMES - 1);
