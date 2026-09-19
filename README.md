@@ -19,6 +19,10 @@
 
 <br/>
 
+<img src="./portfolio_thumbnail.png" alt="Aryan Sharma Portfolio Preview" width="100%" style="border-radius: 12px; box-shadow: 0 16px 48px rgba(0,0,0,0.6);" />
+
+<br/><br/>
+
 [![Engine](https://img.shields.io/badge/Engine-HTML5%20Canvas%2024FPS-black?style=flat-square&logo=html5)](https://github.com/aaddi1/My-Portfolio)
 [![Scroll](https://img.shields.io/badge/Scroll-Lenis%20Smooth%20Scroll-purple?style=flat-square)](https://github.com/darkroomengineering/lenis)
 [![Design](https://img.shields.io/badge/Design-Apple%20Clear%20Liquid%20Glass-white?style=flat-square&logo=apple)](https://github.com/aaddi1/My-Portfolio)
