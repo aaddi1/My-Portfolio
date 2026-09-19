@@ -598,7 +598,7 @@ button {
 }
 
 /* ==========================================================================
-   HERO SECTION & DUAL-COLUMN LAYOUT
+   HERO SECTION & REVEAL ANIMATIONS (MINIMAL SPACIOUS LAYOUT)
    ========================================================================== */
 .hero-section {
   min-height: 100vh;
@@ -607,7 +607,7 @@ button {
   flex-direction: column;
   justify-content: space-between;
   padding-top: 130px;
-  padding-bottom: 40px;
+  padding-bottom: 36px;
 }
 
 .hero-reveal-item {
@@ -618,12 +618,11 @@ button {
 
 .hero-top-badge.hero-reveal-item { animation-delay: 0.1s; }
 .hero-headline.hero-reveal-item { animation-delay: 0.22s; }
-.hero-bio.hero-reveal-item { animation-delay: 0.35s; }
-.hero-right-col.hero-reveal-item { animation-delay: 0.45s; }
+.hero-bottom-right-bio.hero-reveal-item { animation-delay: 0.38s; }
 .client-marquee-wrapper.hero-reveal-item {
   opacity: 0;
   transform: translateY(16px);
-  animation: heroRevealFade 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+  animation: heroRevealFade 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.55s forwards;
 }
 
 @keyframes heroRevealUp {
@@ -642,18 +641,17 @@ button {
 
 .hero-container {
   width: 100%;
-}
-
-.hero-grid-layout {
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 48px;
-  align-items: center;
-}
-
-.hero-left-col {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  min-height: 62vh;
+}
+
+.hero-top-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .hero-top-badge {
@@ -664,7 +662,7 @@ button {
   font-size: 12px;
   color: var(--text-muted);
   letter-spacing: 0.12em;
-  margin-bottom: 24px;
+  margin-bottom: 18px;
 }
 
 .badge-tag {
@@ -678,178 +676,56 @@ button {
 
 .hero-headline {
   font-family: var(--font-display);
-  font-size: clamp(44px, 7.5vw, 100px);
+  font-size: clamp(48px, 9.5vw, 120px);
   font-weight: 800;
   letter-spacing: -0.03em;
-  line-height: 0.95;
-  margin-bottom: 28px;
+  line-height: 0.92;
   text-transform: uppercase;
 }
 
-.hero-bio {
-  max-width: 520px;
+/* Bottom Right: Minimal Typographic Statement on Negative Space */
+.hero-bottom-wrap {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-top: auto;
+  padding-top: 32px;
 }
 
-.hero-bio p {
+.hero-bottom-right-bio {
+  max-width: 440px;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.hero-bio-statement {
   font-family: var(--font-mono);
-  font-size: 14px;
-  line-height: 1.8;
+  font-size: 13.5px;
+  line-height: 1.75;
   letter-spacing: 0.08em;
   color: rgba(255, 255, 255, 0.9);
 }
 
-/* Right Column: Hero Profile Card */
-.hero-right-col {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.hero-profile-card {
-  width: 100%;
-  max-width: 440px;
-  padding: 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
-  border: 1px solid var(--glass-border-hover);
-  box-shadow: var(--glass-inner-shadow-hover), var(--glass-drop-shadow-hover);
-}
-
-.hero-profile-header {
+.hero-bio-specs {
   display: flex;
   align-items: center;
-  gap: 18px;
-}
-
-.hero-avatar-frame {
-  position: relative;
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  padding: 2px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.05));
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-  flex-shrink: 0;
-}
-
-.hero-avatar-img {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  object-fit: cover;
-  display: block;
-}
-
-.hero-avatar-pulse {
-  position: absolute;
-  bottom: 2px;
-  right: 2px;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--accent-green);
-  border: 2px solid #000000;
-  box-shadow: 0 0 10px var(--accent-green);
-  animation: pulse-dot 2s infinite;
-}
-
-.hero-profile-meta {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.hero-profile-name {
-  font-family: var(--font-display);
-  font-size: 18px;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  color: #ffffff;
-}
-
-.hero-profile-role {
+  gap: 8px;
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 10.5px;
   color: var(--text-dim);
   letter-spacing: 0.12em;
 }
 
-.hero-status-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 4px 10px;
-  border-radius: 9999px;
-  background: rgba(16, 185, 129, 0.1);
-  border: 1px solid rgba(16, 185, 129, 0.3);
-  font-family: var(--font-mono);
-  font-size: 9.5px;
-  font-weight: 600;
-  color: #34d399;
-  letter-spacing: 0.08em;
-  width: fit-content;
-  margin-top: 2px;
-}
-
-.hero-stats-chips {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-}
-
-.hero-chip {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 14px;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--glass-border);
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.12);
-  transition: all 0.25s ease;
-}
-
-.hero-chip:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: var(--glass-border-hover);
-  transform: translateY(-2px);
-}
-
-.chip-icon {
-  font-size: 14px;
-}
-
-.chip-val {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.hero-specs-list {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding-top: 14px;
-  border-top: 1px solid var(--glass-border);
-}
-
-.hero-spec-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-family: var(--font-mono);
-  font-size: 10.5px;
-}
-
-.spec-k {
-  color: var(--text-dim);
-  letter-spacing: 0.1em;
-}
-
-.spec-v {
-  color: rgba(255, 255, 255, 0.85);
+.spec-tag {
+  color: var(--accent-green);
   font-weight: 500;
+}
+
+.spec-dot {
+  color: var(--text-dim);
 }
 
 /* Infinite Marquee */
@@ -2265,15 +2141,10 @@ button {
 }
 
 @media (max-width: 1024px) {
-  .hero-grid-layout {
-    grid-template-columns: 1fr;
-    gap: 36px;
-  }
-  .hero-right-col {
-    justify-content: flex-start;
-  }
-  .hero-profile-card {
+  .hero-bottom-right-bio {
     max-width: 100%;
+    text-align: left;
+    align-items: flex-start;
   }
   .about-grid-card {
     grid-template-columns: 1fr;
@@ -2326,14 +2197,11 @@ button {
     font-size: clamp(38px, 10vw, 68px);
     margin-bottom: 24px;
   }
-  .hero-profile-card {
-    padding: 22px 18px;
-    gap: 16px;
-    border-radius: 20px;
+  .hero-bottom-wrap {
+    padding-top: 24px;
   }
-  .hero-stats-chips {
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
+  .hero-bio-statement {
+    font-size: 13px;
   }
   .floating-connect-hub {
     bottom: 20px;
