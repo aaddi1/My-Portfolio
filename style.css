@@ -643,15 +643,15 @@ button {
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  flex: 1;
-  min-height: 62vh;
+  justify-content: center;
 }
 
-.hero-top-wrap {
+.hero-content {
+  max-width: 880px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  text-align: left;
 }
 
 .hero-top-badge {
@@ -662,7 +662,7 @@ button {
   font-size: 12px;
   color: var(--text-muted);
   letter-spacing: 0.12em;
-  margin-bottom: 14px;
+  margin-bottom: 20px;
 }
 
 .badge-tag {
@@ -674,67 +674,37 @@ button {
   color: var(--text-dim);
 }
 
-.hero-headline-prefix {
-  font-family: var(--font-display);
-  font-size: clamp(36px, 5.5vw, 68px);
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  line-height: 1;
-  text-transform: uppercase;
-  color: #ffffff;
-}
-
-/* Bottom: Giant ARYAN Name positioned at the BOTTOM RIGHT corner below avatar jaw */
-.hero-bottom-wrap {
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-  width: 100%;
-  margin-top: auto;
-  padding-top: 36px;
-}
-
-.hero-bottom-content {
-  max-width: 520px;
+.hero-headline {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  text-align: right;
-  gap: 12px;
-}
-
-.hero-giant-name {
   font-family: var(--font-display);
-  font-size: clamp(56px, 11.5vw, 140px);
+  font-size: clamp(52px, 10.5vw, 126px);
   font-weight: 800;
   letter-spacing: -0.03em;
-  line-height: 0.88;
+  line-height: 0.92;
   text-transform: uppercase;
   color: #ffffff;
-  margin-bottom: 6px;
-  text-align: right;
+  margin-bottom: 32px;
 }
 
-.hero-bio-statement {
+.hero-line {
+  display: block;
+}
+
+.hero-name {
+  color: #ffffff;
+}
+
+.hero-bio {
+  max-width: 480px;
+}
+
+.hero-bio p {
   font-family: var(--font-mono);
   font-size: 13.5px;
   line-height: 1.75;
   letter-spacing: 0.08em;
-  color: rgba(255, 255, 255, 0.9);
-  text-align: right;
-}
-
-.hero-bio-specs {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 8px;
-  font-family: var(--font-mono);
-  font-size: 10.5px;
-  color: var(--text-dim);
-  letter-spacing: 0.12em;
-  margin-top: 2px;
-  text-align: right;
+  color: rgba(255, 255, 255, 0.88);
 }
 
 .spec-tag {
@@ -2211,30 +2181,12 @@ button {
     padding-top: 100px;
     padding-bottom: 24px;
   }
-  .hero-headline-prefix {
-    font-size: clamp(28px, 7vw, 44px);
-    margin-bottom: 8px;
+  .hero-headline {
+    font-size: clamp(40px, 11vw, 72px);
+    margin-bottom: 20px;
   }
-  .hero-bottom-wrap {
-    justify-content: flex-start;
-    padding-top: 24px;
-  }
-  .hero-bottom-content {
-    align-items: flex-start;
-    text-align: left;
-    max-width: 100%;
-  }
-  .hero-giant-name {
-    font-size: clamp(48px, 14vw, 84px);
-    margin-bottom: 10px;
-    text-align: left;
-  }
-  .hero-bio-statement {
+  .hero-bio p {
     font-size: 13px;
-    text-align: left;
-  }
-  .hero-bio-specs {
-    justify-content: flex-start;
   }
   .floating-connect-hub {
     bottom: 20px;
