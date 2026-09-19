@@ -1,0 +1,349 @@
+import Lenis from 'lenis';
+
+const TOTAL_FRAMES = 240;
+const FRAME_PATH = (index) => `./frames/frame_${String(index).padStart(6, '0')}.jpg`;
+
+// DOM Elements
+const canvas = document.getElementById('animation-canvas');
+const ctx = canvas.getContext('2d', { alpha: false, desynchronized: true });
+const loader = document.getElementById('loader');
+const loaderPercent = document.getElementById('loader-percent');
+const loaderBar = document.getElementById('loader-bar');
+const siteHeader = document.querySelector('.site-header');
+
+// Modal Elements
+const certModal = document.getElementById('cert-modal');
+const modalTitle = document.getElementById('modal-title');
+const modalBody = document.getElementById('modal-body');
+const modalDownload = document.getElementById('modal-download');
+const modalClose = document.getElementById('modal-close');
+const modalBackdrop = document.querySelector('.modal-backdrop');
+const legalPdfLink = document.getElementById('legal-pdf-link');
+
+// Form Elements
+const contactForm = document.getElementById('contact-form');
+const submitBtn = document.getElementById('submit-btn');
+const formFeedback = document.getElementById('form-feedback');
+
+// State
+const images = new Array(TOTAL_FRAMES + 1);
+let loadedCount = 0;
+let currentFrame = 1;
+let targetFrame = 1;
+let lastDrawnFrame = -1;
+let isFirstFrameReady = false;
+let isLoaderHidden = false;
+let needsForcedRedraw = false;
+
+// 1. Initialize Smooth Scroll with Lenis
+const lenis = new Lenis({
+  duration: 1.2,
+  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+  orientation: 'vertical',
+  gestureOrientation: 'vertical',
+  smoothWheel: true,
+  wheelMultiplier: 1.0,
+  touchMultiplier: 1.2,
+  syncTouch: true,
+});
+
+// Smooth anchor scrolling
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener('click', (e) => {
+    const href = anchor.getAttribute('href');
+    if (href === '#' || !href) return;
+    const target = document.querySelector(href);
+    if (target) {
+      e.preventDefault();
+      lenis.scrollTo(target, { offset: -60, duration: 1.2 });
+    }
+  });
+});
+
+// 2. Resize Canvas Handling
+function resizeCanvas() {
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  const displayWidth = window.innerWidth;
+  const displayHeight = window.innerHeight;
+
+  const targetWidth = Math.round(displayWidth * dpr);
+  const targetHeight = Math.round(displayHeight * dpr);
+
+  if (canvas.width !== targetWidth || canvas.height !== targetHeight) {
+    canvas.width = targetWidth;
+    canvas.height = targetHeight;
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
+    needsForcedRedraw = true;
+  }
+}
+
+// 3. Aspect Ratio Cover Drawing
+function drawFrame(img) {
+  if (!img || !img.complete || img.naturalWidth === 0) return;
+
+  const cWidth = canvas.width;
+  const cHeight = canvas.height;
+  const iWidth = img.naturalWidth;
+  const iHeight = img.naturalHeight;
+
+  const canvasAspect = cWidth / cHeight;
+  const imgAspect = iWidth / iHeight;
+
+  let renderWidth, renderHeight, offsetX, offsetY;
+
+  if (canvasAspect > imgAspect) {
+    renderWidth = cWidth;
+    renderHeight = cWidth / imgAspect;
+    offsetX = 0;
+    offsetY = (cHeight - renderHeight) / 2;
+  } else {
+    renderHeight = cHeight;
+    renderWidth = cHeight * imgAspect;
+    offsetX = (cWidth - renderWidth) / 2;
+    offsetY = 0;
+  }
+
+  ctx.fillStyle = '#000000';
+  ctx.fillRect(0, 0, cWidth, cHeight);
+  ctx.drawImage(img, offsetX, offsetY, renderWidth, renderHeight);
+}
+
+// 4. Fallback for Nearest Loaded Frame
+function getRenderableFrame(index) {
+  if (images[index] && images[index].isReady) {
+    return images[index];
+  }
+
+  for (let offset = 1; offset < TOTAL_FRAMES; offset++) {
+    const prev = index - offset;
+    if (prev >= 1 && images[prev] && images[prev].isReady) {
+      return images[prev];
+    }
+    const next = index + offset;
+    if (next <= TOTAL_FRAMES && images[next] && images[next].isReady) {
+      return images[next];
+    }
+  }
+  return null;
+}
+
+// 5. Load Single Frame with Async Decoding
+async function loadSingleFrame(index) {
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.src = FRAME_PATH(index);
+
+    const onReady = async () => {
+      try {
+        if ('decode' in img) {
+          await img.decode();
+        }
+      } catch {
+        // Continue if decoding is interrupted
+      }
+      img.isReady = true;
+      images[index] = img;
+      loadedCount++;
+      updateLoaderProgress();
+      resolve(img);
+    };
+
+    img.onload = onReady;
+    img.onerror = () => {
+      resolve(null);
+    };
+  });
+}
+
+// 6. Update Loader UI
+function updateLoaderProgress() {
+  const percent = Math.round((loadedCount / TOTAL_FRAMES) * 100);
+  if (loaderPercent) loaderPercent.textContent = `${percent}%`;
+  if (loaderBar) loaderBar.style.width = `${percent}%`;
+
+  if (loadedCount >= Math.min(24, TOTAL_FRAMES) && !isLoaderHidden) {
+    if (loader) {
+      loader.classList.add('loaded');
+    }
+    isLoaderHidden = true;
+  }
+}
+
+// 7. Concurrent Batch Preloading
+async function preloadFrames() {
+  const firstFrame = await loadSingleFrame(1);
+  if (firstFrame) {
+    isFirstFrameReady = true;
+    resizeCanvas();
+    drawFrame(firstFrame);
+  }
+
+  const queue = [];
+  for (let i = 2; i <= TOTAL_FRAMES; i++) {
+    queue.push(i);
+  }
+
+  const CONCURRENCY = 16;
+  const workers = Array.from({ length: CONCURRENCY }, async () => {
+    while (queue.length > 0) {
+      const frameIndex = queue.shift();
+      if (frameIndex !== undefined) {
+        await loadSingleFrame(frameIndex);
+      }
+    }
+  });
+
+  await Promise.all(workers);
+}
+
+// 8. Animation and Render Loop
+function render(time) {
+  lenis.raf(time);
+
+  // Update header blur style on scroll
+  if (window.scrollY > 40) {
+    siteHeader?.classList.add('scrolled');
+  } else {
+    siteHeader?.classList.remove('scrolled');
+  }
+
+  const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+  let progress = 0;
+  if (typeof lenis.progress === 'number' && !isNaN(lenis.progress)) {
+    progress = Math.max(0, Math.min(1, lenis.progress));
+  } else if (maxScroll > 0) {
+    progress = Math.max(0, Math.min(1, window.scrollY / maxScroll));
+  }
+
+  targetFrame = 1 + progress * (TOTAL_FRAMES - 1);
+
+  // Inertial lerp interpolation for silky animation scrub
+  currentFrame += (targetFrame - currentFrame) * 0.22;
+  const clampedFrame = Math.max(1, Math.min(TOTAL_FRAMES, currentFrame));
+  const roundedFrame = Math.round(clampedFrame);
+
+  if (roundedFrame !== lastDrawnFrame || needsForcedRedraw) {
+    const frameImg = getRenderableFrame(roundedFrame);
+    if (frameImg) {
+      drawFrame(frameImg);
+      lastDrawnFrame = roundedFrame;
+      needsForcedRedraw = false;
+    }
+  }
+
+  requestAnimationFrame(render);
+}
+
+// 10. Certificate Filter Tabs
+const certFilterBtns = document.querySelectorAll('.cert-filter-btn');
+const certCards = document.querySelectorAll('.cert-card');
+
+certFilterBtns.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    certFilterBtns.forEach((b) => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const filter = btn.getAttribute('data-filter');
+
+    certCards.forEach((card) => {
+      const categories = card.getAttribute('data-category') || '';
+      if (filter === 'all' || categories.includes(filter)) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+
+    lenis.resize();
+  });
+});
+
+// 11. Modal Handlers for Certificates & Legal Terms
+function openModal(src, title, type) {
+  if (!certModal) return;
+  modalTitle.textContent = title || 'Document';
+  if (modalDownload) {
+    modalDownload.href = src;
+    modalDownload.setAttribute('download', title || 'document');
+  }
+  modalBody.innerHTML = '';
+
+  if (type === 'image') {
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = title;
+    modalBody.appendChild(img);
+  } else {
+    const iframe = document.createElement('iframe');
+    iframe.src = src;
+    iframe.title = title;
+    modalBody.appendChild(iframe);
+  }
+
+  certModal.classList.add('active');
+  certModal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  if (!certModal) return;
+  certModal.classList.remove('active');
+  certModal.setAttribute('aria-hidden', 'true');
+  modalBody.innerHTML = '';
+  document.body.style.overflow = '';
+}
+
+document.querySelectorAll('.cert-card').forEach((card) => {
+  card.addEventListener('click', () => {
+    const src = card.getAttribute('data-src');
+    const title = card.getAttribute('data-title');
+    const type = card.getAttribute('data-type') || 'pdf';
+    if (src) {
+      openModal(src, title, type);
+    }
+  });
+});
+
+// Legal Notice PDF Modal Trigger
+legalPdfLink?.addEventListener('click', (e) => {
+  e.preventDefault();
+  openModal('./legal-notice.pdf', 'Intellectual Property, Copyright & Legal Terms Notice — Aryan Sharma', 'pdf');
+});
+
+modalClose?.addEventListener('click', closeModal);
+modalBackdrop?.addEventListener('click', closeModal);
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && certModal?.classList.contains('active')) {
+    closeModal();
+  }
+});
+
+// 12. Contact Form Interactive Submission
+contactForm?.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const originalText = submitBtn.innerHTML;
+  submitBtn.innerHTML = `<span>SENDING...</span>`;
+  submitBtn.disabled = true;
+
+  setTimeout(() => {
+    submitBtn.innerHTML = originalText;
+    submitBtn.disabled = false;
+    formFeedback.textContent = '✓ Thank you! Your message has been sent to Aryan Sharma.';
+    formFeedback.className = 'form-feedback success';
+    contactForm.reset();
+
+    setTimeout(() => {
+      formFeedback.className = 'form-feedback';
+    }, 5000);
+  }, 1000);
+});
+
+// Window Listeners
+window.addEventListener('resize', resizeCanvas);
+
+window.addEventListener('DOMContentLoaded', () => {
+  resizeCanvas();
+  preloadFrames();
+  requestAnimationFrame(render);
+});

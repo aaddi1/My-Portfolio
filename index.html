@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>Aryan Sharma — 3D Designer & Creative Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+
+  <!-- Minimal Preloader Screen -->
+  <div id="loader" class="loader">
+    <div class="loader-content">
+      <div class="loader-spinner"></div>
+      <div class="loader-text">
+        <span id="loader-percent">0%</span>
+      </div>
+      <div class="loader-bar-bg">
+        <div id="loader-bar" class="loader-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fixed 3D Background Canvas -->
+  <div class="canvas-container">
+    <canvas id="animation-canvas"></canvas>
+    <div class="canvas-overlay"></div>
+  </div>
+
+  <!-- Sticky Top Navigation -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="#hero" class="brand-logo">
+        <div class="logo-avatar-wrap">
+          <img src="./avatar.png" alt="Aryan Sharma" class="logo-avatar-img" />
+          <span class="logo-online-dot"></span>
+        </div>
+        <div class="logo-info">
+          <span class="logo-text">ARYAN SHARMA</span>
+          <span class="logo-sub">3D DESIGNER &bull; ENGINEER</span>
+        </div>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="#about" class="nav-link">ABOUT</a>
+        <a href="#services" class="nav-link">SERVICES</a>
+        <a href="#projects" class="nav-link">PROJECTS</a>
+        <a href="#certificates" class="nav-link">CERTIFICATES</a>
+        <a href="#testimonials" class="nav-link">TESTIMONIALS</a>
+        <a href="#contact" class="nav-link">CONTACT</a>
+      </nav>
+
+      <a href="#contact" class="btn-pill header-cta">
+        <span class="status-dot"></span>
+        <span>CONTACT ME</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Scrollable Content Container -->
+  <main class="main-content">
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="section hero-section">
+      <div class="container hero-container">
+        <div class="hero-top-badge">
+          <span class="badge-tag">PORTFOLIO '26</span>
+          <span class="badge-divider">/</span>
+          <span class="badge-desc">3D ART, INTERACTION &amp; ENGINEERING</span>
+        </div>
+
+        <h1 class="hero-headline">
+          <span class="line-1">HI, I'M ARYAN</span>
+        </h1>
+
+        <div class="hero-meta-grid">
+          <div class="hero-bio">
+            <p>A 3D DESIGNER &amp; CREATIVE ENGINEER PASSIONATE ABOUT CRAFTING BOLD AND MEMORABLE DIGITAL EXPERIENCES &reg;</p>
+          </div>
+          <div class="hero-actions">
+            <a href="#contact" class="btn-pill btn-glow">
+              <span class="status-dot"></span>
+              <span>CONTACT ME</span>
+            </a>
+            <a href="#certificates" class="btn-ghost">
+              <span>VIEW CERTIFICATES</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Infinite Client & Tech Marquee -->
+      <div class="client-marquee-wrapper">
+        <div class="client-marquee">
+          <div class="marquee-track">
+            <span class="marquee-item">AWS CLOUD</span>
+            <span class="marquee-divider">&bull;</span>
+            <span class="marquee-item">SCALER ACADEMY</span>
+            <span class="marquee-divider">&bull;</span>
+            <span class="marquee-item">BCG X GENAI</span>
+            <span class="marquee-divider">&bull;</span>
+            <span class="marquee-item">BANK OF AMERICA</span>
+            <span class="marquee-divider">&bull;</span>
+            <span class="marquee-item">DELOITTE CYBER</span>
+            <span class="marquee-divider">&bull;</span>
+            <span class="marquee-item">ISRO OUTREACH</span>
+            <span class="marquee-divider">&bull;</span>
+            <span class="marquee-item">HP LIFE AI</span>
+            <span class="marquee-divider">&bull;</span>
+            <span class="marquee-item">MASTERCARD ADVISORS</span>
+            <span class="marquee-divider">&bull;</span>
+            <span class="marquee-item">PROTOSPHERE</span>
+            <span class="marquee-divider">&bull;</span>
+            <span class="marquee-item">METAFORM CREATIONS</span>
+            <span class="marquee-divider">&bull;</span>
+            <span class="marquee-item">APEX INTERACTIVE</span>
+            <span class="marquee-divider">&bull;</span>
+          </div>
+          <div class="marquee-track" aria-hidden="true">
+            <span class="marquee-item">AWS CLOUD</span>
+            <span class="marquee-divider">&bull;</span>
+            <span class="marquee-item">SCALER ACADEMY</span>
+            <span class="marquee-divider">&bull;</span>
+            <span class="marquee-item">BCG X GENAI</span>
+            <span class="marquee-divider">&bull;</span>
+            <span class="marquee-item">BANK OF AMERICA</span>
+            <span class="marquee-divider">&bull;</span>
+            <span class="marquee-item">DELOITTE CYBER</span>
+            <span class="marquee-divider">&bull;</span>
+            <span class="marquee-item">ISRO OUTREACH</span>
+            <span class="marquee-divider">&bull;</span>
+            <span class="marquee-item">HP LIFE AI</span>
+            <span class="marquee-divider">&bull;</span>
+            <span class="marquee-item">MASTERCARD ADVISORS</span>
+            <span class="marquee-divider">&bull;</span>
+            <span class="marquee-item">PROTOSPHERE</span>
+            <span class="marquee-divider">&bull;</span>
+            <span class="marquee-item">METAFORM CREATIONS</span>
+            <span class="marquee-divider">&bull;</span>
+            <span class="marquee-item">APEX INTERACTIVE</span>
+            <span class="marquee-divider">&bull;</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="section about-section">
+      <div class="container">
+        <div class="section-tag">
+          <span class="mono-num">01</span>
+          <span class="tag-title">ABOUT ARYAN</span>
+        </div>
+
+        <div class="about-grid-card glass-panel">
+          <!-- Avatar Side -->
+          <div class="about-avatar-col">
+            <div class="about-avatar-frame">
+              <img src="./avatar.png" alt="Aryan Sharma" class="about-avatar-img" />
+              <div class="about-avatar-badge">
+                <span class="status-dot"></span>
+                <span>AVAILABLE FOR WORK</span>
+              </div>
+            </div>
+            <div class="about-quick-facts">
+              <div class="fact-item">
+                <span class="fact-label">LOCATION</span>
+                <span class="fact-value">India &bull; Remote</span>
+              </div>
+              <div class="fact-item">
+                <span class="fact-label">EXPERIENCE</span>
+                <span class="fact-value">10+ Certifications &bull; 40+ Projects</span>
+              </div>
+              <div class="fact-item">
+                <span class="fact-label">CORE STACK</span>
+                <span class="fact-value">Three.js, Node.js, Python, PostgreSQL</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bio Content Side -->
+          <div class="about-content-col">
+            <h2 class="section-title">ABOUT ME</h2>
+            <div class="about-bio-paragraphs">
+              <p class="lead-text">
+                I'm a certified web developer focused on interface and experience. I build websites and digital products for businesses and brands &mdash; the design, the front-end, and the services underneath it.
+              </p>
+              <p class="sub-text">
+                Most of my work starts the same way: figure out what the site actually has to do for the business, then design around that. Sometimes that's a boutique hotel site that has to feel expensive within three seconds. Sometimes it's an internal platform that has to make inventory and invoicing bearable. The craft is the same &mdash; clear structure, real performance, and an interface people don't have to think about.
+              </p>
+              <p class="sub-text">
+                I work across the stack, so I'm not handing a design over a wall and hoping. I design it, build it, wire it to the data, and ship it.
+              </p>
+            </div>
+
+            <div class="about-footer">
+              <div class="about-actions">
+                <a href="#contact" class="btn-pill">
+                  <span>CONTACT ME</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/in/aryan-sharma11/" target="_blank" rel="noopener" class="btn-ghost">
+                  <span>LINKEDIN PROFILE</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                </a>
+              </div>
+              <div class="stats-row">
+                <div class="stat-box">
+                  <span class="stat-number">10+</span>
+                  <span class="stat-label">Certificates</span>
+                </div>
+                <div class="stat-box">
+                  <span class="stat-number">40+</span>
+                  <span class="stat-label">3D Projects</span>
+                </div>
+                <div class="stat-box">
+                  <span class="stat-number">100%</span>
+                  <span class="stat-label">Client Satisfaction</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="section services-section">
+      <div class="container">
+        <div class="section-tag">
+          <span class="mono-num">02</span>
+          <span class="tag-title">WHAT I DO</span>
+        </div>
+
+        <h2 class="section-title">SERVICES</h2>
+
+        <div class="services-list">
+          <!-- Service 01 -->
+          <div class="service-item glass-panel">
+            <div class="service-header">
+              <span class="service-num">01</span>
+              <h3 class="service-name">3D MODELING</h3>
+            </div>
+            <p class="service-desc">
+              Creation of detailed objects, characters, or environments tailored to specific client needs, ideal for games, products, and visualizations.
+            </p>
+            <div class="service-tags">
+              <span>Hard Surface</span>
+              <span>Characters</span>
+              <span>Environments</span>
+            </div>
+          </div>
+
+          <!-- Service 02 -->
+          <div class="service-item glass-panel">
+            <div class="service-header">
+              <span class="service-num">02</span>
+              <h3 class="service-name">3D RENDERING</h3>
+            </div>
+            <p class="service-desc">
+              High-quality, photorealistic renders that showcase designs with realistic lighting, textures, and shadows.
+            </p>
+            <div class="service-tags">
+              <span>Ray Tracing</span>
+              <span>Photorealism</span>
+              <span>Studio Lighting</span>
+            </div>
+          </div>
+
+          <!-- Service 03 -->
+          <div class="service-item glass-panel">
+            <div class="service-header">
+              <span class="service-num">03</span>
+              <h3 class="service-name">3D ANIMATION</h3>
+            </div>
+            <p class="service-desc">
+              Dynamic animations to bring characters, products, or environments to life for marketing, gaming, or storytelling.
+            </p>
+            <div class="service-tags">
+              <span>Camera Flythrough</span>
+              <span>Product Exploded Views</span>
+              <span>Keyframing</span>
+            </div>
+          </div>
+
+          <!-- Service 04 -->
+          <div class="service-item glass-panel">
+            <div class="service-header">
+              <span class="service-num">04</span>
+              <h3 class="service-name">PRODUCT DESIGN</h3>
+            </div>
+            <p class="service-desc">
+              Precise 3D modeling and rendering for showcasing or prototyping consumer products.
+            </p>
+            <div class="service-tags">
+              <span>CAD Precision</span>
+              <span>Packaging</span>
+              <span>Concept Viz</span>
+            </div>
+          </div>
+
+          <!-- Service 05 -->
+          <div class="service-item glass-panel">
+            <div class="service-header">
+              <span class="service-num">05</span>
+              <h3 class="service-name">3D PRINTING MODELS</h3>
+            </div>
+            <p class="service-desc">
+              Custom 3D designs prepared and optimized for 3D printing technology.
+            </p>
+            <div class="service-tags">
+              <span>Watertight Meshes</span>
+              <span>STL / OBJ Prep</span>
+              <span>Prototyping</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="section projects-section">
+      <div class="container">
+        <div class="section-tag">
+          <span class="mono-num">03</span>
+          <span class="tag-title">FEATURED REPOSITORIES</span>
+        </div>
+
+        <h2 class="section-title">PROJECTS</h2>
+
+        <div class="projects-grid">
+          <!-- Project 01: NEXUS -->
+          <div class="project-card glass-panel">
+            <div class="project-thumb-wrap">
+              <img src="./projects/nexus.png" alt="NEXUS Business Intelligence Platform" class="project-thumb-img" loading="lazy" />
+              <span class="project-thumb-tag">FULL-STACK &bull; BI PLATFORM</span>
+            </div>
+            <div class="project-body">
+              <div class="project-top">
+                <span class="project-idx">01</span>
+                <span class="project-tag">POSTGRESQL &bull; PYTHON &bull; NODE</span>
+              </div>
+              <div class="project-meta">
+                <span class="client-label">OPEN SOURCE REPOSITORY</span>
+                <h3 class="client-name">NEXUS Platform</h3>
+              </div>
+              <p class="project-info">
+                Full-stack business management platform featuring CRM, real-time inventory tracking, automated invoicing, predictive business intelligence, and C++ analytics acceleration.
+              </p>
+              <div class="project-tags-row">
+                <span>Node.js</span>
+                <span>PostgreSQL</span>
+                <span>Python</span>
+                <span>C++</span>
+                <span>Analytics</span>
+              </div>
+              <div class="project-footer">
+                <a href="https://github.com/aaddi1/NEXUS" target="_blank" rel="noopener" class="project-link">
+                  <span>VIEW ON GITHUB</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 02: Cinder House -->
+          <div class="project-card glass-panel">
+            <div class="project-thumb-wrap">
+              <img src="./projects/cinder-house.png" alt="Cinder House Boutique Hotel" class="project-thumb-img" loading="lazy" />
+              <span class="project-thumb-tag">3D WEB &bull; THREE.JS</span>
+            </div>
+            <div class="project-body">
+              <div class="project-top">
+                <span class="project-idx">02</span>
+                <span class="project-tag">THREE.JS &bull; WEBGL &bull; LIQUID GLASS</span>
+              </div>
+              <div class="project-meta">
+                <span class="client-label">3D HOTEL EXPERIENCE</span>
+                <h3 class="client-name">Cinder House</h3>
+              </div>
+              <p class="project-info">
+                Boutique hotel web experience designed to create an immersive digital experience combining Three.js 3D spatial visuals, fluid interactions, responsive design, and liquid glass styling.
+              </p>
+              <div class="project-tags-row">
+                <span>Three.js</span>
+                <span>WebGL</span>
+                <span>3D Visuals</span>
+                <span>Liquid Glass</span>
+                <span>UI/UX</span>
+              </div>
+              <div class="project-footer">
+                <a href="https://github.com/aaddi1/Cinder-House" target="_blank" rel="noopener" class="project-link">
+                  <span>VIEW ON GITHUB</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 03: Advocate Webpage -->
+          <div class="project-card glass-panel">
+            <div class="project-thumb-wrap">
+              <img src="./projects/advocate.png" alt="Advocate Legal Webpage" class="project-thumb-img" loading="lazy" />
+              <span class="project-thumb-tag">LEGAL TECH &bull; CLIENT PORTAL</span>
+            </div>
+            <div class="project-body">
+              <div class="project-top">
+                <span class="project-idx">03</span>
+                <span class="project-tag">LEGAL TECH &bull; BOOKINGS</span>
+              </div>
+              <div class="project-meta">
+                <span class="client-label">LEGAL SERVICES PORTAL</span>
+                <h3 class="client-name">Advocate Platform</h3>
+              </div>
+              <p class="project-info">
+                Modern, responsive advocate and law firm web application designed to showcase legal services, establish client trust, streamline case inquiries, and handle direct client consultation workflows.
+              </p>
+              <div class="project-tags-row">
+                <span>Responsive Web</span>
+                <span>Legal UI</span>
+                <span>Consultation</span>
+                <span>Modern UX</span>
+              </div>
+              <div class="project-footer">
+                <a href="https://github.com/aaddi1/Advocate-webpage" target="_blank" rel="noopener" class="project-link">
+                  <span>VIEW ON GITHUB</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 04: Restaurant Webpage -->
+          <div class="project-card glass-panel">
+            <div class="project-thumb-wrap">
+              <img src="./projects/starinn.png" alt="Star Inn Restaurant Experience" class="project-thumb-img" loading="lazy" />
+              <span class="project-thumb-tag">CULINARY &bull; HOSPITALITY</span>
+            </div>
+            <div class="project-body">
+              <div class="project-top">
+                <span class="project-idx">04</span>
+                <span class="project-tag">CULINARY &bull; INTERACTIVE MENU</span>
+              </div>
+              <div class="project-meta">
+                <span class="client-label">FINE DINING SHOWCASE</span>
+                <h3 class="client-name">Star Inn Dining</h3>
+              </div>
+              <p class="project-info">
+                Contemporary restaurant and hospitality experience featuring interactive culinary menus, dining ambiance showcases, table booking integrations, and elegant typography.
+              </p>
+              <div class="project-tags-row">
+                <span>Hospitality UI</span>
+                <span>Interactive Menu</span>
+                <span>Reservations</span>
+                <span>Responsive</span>
+              </div>
+              <div class="project-footer">
+                <a href="https://github.com/aaddi1/Restaurant-webpage" target="_blank" rel="noopener" class="project-link">
+                  <span>VIEW ON GITHUB</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATES SECTION -->
+    <section id="certificates" class="section cert-section">
+      <div class="container">
+        <div class="section-tag">
+          <span class="mono-num">04</span>
+          <span class="tag-title">VERIFIED CREDENTIALS</span>
+        </div>
+
+        <div class="cert-header-wrap">
+          <h2 class="section-title">CERTIFICATES &amp; HONORS</h2>
+          <p class="section-subtitle">
+            Official certifications awarded to <strong>Aryan Sharma</strong> in Cloud Architecture, Generative AI, Enterprise Engineering, and Cybersecurity.
+          </p>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="cert-filters">
+          <button class="cert-filter-btn active" data-filter="all">ALL (10)</button>
+          <button class="cert-filter-btn" data-filter="cloud">CLOUD &amp; AI</button>
+          <button class="cert-filter-btn" data-filter="enterprise">ENTERPRISE</button>
+          <button class="cert-filter-btn" data-filter="engineering">ENGINEERING</button>
+        </div>
+
+        <div class="cert-grid">
+          <!-- Cert 1: AWS Scaler Certificate -->
+          <div class="cert-card glass-panel" data-category="cloud engineering" data-src="./certificates/scaler Certificate.png" data-title="AWS Scaler Certification — Aryan Sharma" data-type="image">
+            <div class="cert-thumb-wrap">
+              <img src="./certificates/thumbs/scaler Certificate.png" alt="AWS Scaler Certification Preview" class="cert-thumb-img" loading="lazy" />
+              <div class="cert-thumb-overlay">
+                <span class="cert-expand-badge">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                  <span>EXPAND PREVIEW</span>
+                </span>
+              </div>
+            </div>
+            <div class="cert-body">
+              <div class="cert-card-header">
+                <span class="cert-badge">AWS &bull; SCALER</span>
+                <span class="cert-date">Sep 2026</span>
+              </div>
+              <h3 class="cert-title">AWS Scaler Certification</h3>
+              <p class="cert-issuer">Scaler Academy &amp; Amazon Web Services</p>
+              <p class="cert-desc">Cloud architecture, serverless computing, and enterprise infrastructure design.</p>
+              <div class="cert-footer">
+                <span class="cert-view-btn">
+                  <span>VIEW CERTIFICATE</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cert 2: AWS Developer Learning Plan -->
+          <div class="cert-card glass-panel" data-category="cloud engineering" data-src="./certificates/AWS Training .pdf" data-title="AWS Developer Learning Plan — Aryan Sharma" data-type="pdf">
+            <div class="cert-thumb-wrap">
+              <img src="./certificates/thumbs/AWS Training .png" alt="AWS Developer Learning Plan Preview" class="cert-thumb-img" loading="lazy" />
+              <div class="cert-thumb-overlay">
+                <span class="cert-expand-badge">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                  <span>EXPAND PREVIEW</span>
+                </span>
+              </div>
+            </div>
+            <div class="cert-body">
+              <div class="cert-card-header">
+                <span class="cert-badge">AWS OFFICIAL</span>
+                <span class="cert-date">Sep 2026</span>
+              </div>
+              <h3 class="cert-title">AWS Developer Learning Plan</h3>
+              <p class="cert-issuer">Amazon Web Services (AWS Training &amp; Cert)</p>
+              <p class="cert-desc">Core developer tools, IAM security policies, DynamoDB, Lambda, and SDK deployment.</p>
+              <div class="cert-footer">
+                <span class="cert-view-btn">
+                  <span>VIEW CREDENTIAL</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cert 3: BCG X GenAI -->
+          <div class="cert-card glass-panel" data-category="cloud enterprise" data-src="./certificates/BCGX Certificate.pdf" data-title="BCG X GenAI Job Simulation — Aryan Sharma" data-type="pdf">
+            <div class="cert-thumb-wrap">
+              <img src="./certificates/thumbs/BCGX Certificate.png" alt="BCG X GenAI Job Simulation Preview" class="cert-thumb-img" loading="lazy" />
+              <div class="cert-thumb-overlay">
+                <span class="cert-expand-badge">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                  <span>EXPAND PREVIEW</span>
+                </span>
+              </div>
+            </div>
+            <div class="cert-body">
+              <div class="cert-card-header">
+                <span class="cert-badge">AI &bull; STRATEGY</span>
+                <span class="cert-date">Sep 2026</span>
+              </div>
+              <h3 class="cert-title">BCG X GenAI Job Simulation</h3>
+              <p class="cert-issuer">Boston Consulting Group (BCG X)</p>
+              <p class="cert-desc">Data extraction, financial chatbot architecture, and generative AI application design.</p>
+              <div class="cert-footer">
+                <span class="cert-view-btn">
+                  <span>VIEW CREDENTIAL</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cert 4: Bank of America -->
+          <div class="cert-card glass-panel" data-category="enterprise" data-src="./certificates/Bank Of America Certificate.pdf" data-title="Global Markets Sales & Trading Analyst — Aryan Sharma" data-type="pdf">
+            <div class="cert-thumb-wrap">
+              <img src="./certificates/thumbs/Bank Of America Certificate.png" alt="Bank of America Analyst Preview" class="cert-thumb-img" loading="lazy" />
+              <div class="cert-thumb-overlay">
+                <span class="cert-expand-badge">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                  <span>EXPAND PREVIEW</span>
+                </span>
+              </div>
+            </div>
+            <div class="cert-body">
+              <div class="cert-card-header">
+                <span class="cert-badge">FINTECH</span>
+                <span class="cert-date">Sep 2026</span>
+              </div>
+              <h3 class="cert-title">Bank of America Analyst</h3>
+              <p class="cert-issuer">Bank of America</p>
+              <p class="cert-desc">Market analysis, quantitative trade execution, and institutional financial simulations.</p>
+              <div class="cert-footer">
+                <span class="cert-view-btn">
+                  <span>VIEW CREDENTIAL</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cert 5: Deloitte Cyber Security -->
+          <div class="cert-card glass-panel" data-category="enterprise engineering" data-src="./certificates/E9pA6qsdbeyEkp3ti_9PBTqmSxAf6zZTseP_6aa04aaf1c45172ff2315001_1788890343390_completion_certificate.pdf" data-title="Deloitte Cyber Security Simulation — Aryan Sharma" data-type="pdf">
+            <div class="cert-thumb-wrap">
+              <img src="./certificates/thumbs/E9pA6qsdbeyEkp3ti_9PBTqmSxAf6zZTseP_6aa04aaf1c45172ff2315001_1788890343390_completion_certificate.png" alt="Deloitte Cyber Job Simulation Preview" class="cert-thumb-img" loading="lazy" />
+              <div class="cert-thumb-overlay">
+                <span class="cert-expand-badge">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                  <span>EXPAND PREVIEW</span>
+                </span>
+              </div>
+            </div>
+            <div class="cert-body">
+              <div class="cert-card-header">
+                <span class="cert-badge">CYBERSECURITY</span>
+                <span class="cert-date">Sep 2026</span>
+              </div>
+              <h3 class="cert-title">Deloitte Cyber Job Simulation</h3>
+              <p class="cert-issuer">Deloitte</p>
+              <p class="cert-desc">Threat modeling, vulnerability assessment, and enterprise security architecture.</p>
+              <div class="cert-footer">
+                <span class="cert-view-btn">
+                  <span>VIEW CREDENTIAL</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cert 6: ISRO Outreach Program -->
+          <div class="cert-card glass-panel" data-category="engineering cloud" data-src="./certificates/Edusat Registrations.pdf" data-title="IIRS / ISRO Outreach Program — Aryan Sharma" data-type="pdf">
+            <div class="cert-thumb-wrap">
+              <img src="./certificates/thumbs/Edusat Registrations.png" alt="IIRS ISRO Outreach Program Preview" class="cert-thumb-img" loading="lazy" />
+              <div class="cert-thumb-overlay">
+                <span class="cert-expand-badge">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                  <span>EXPAND PREVIEW</span>
+                </span>
+              </div>
+            </div>
+            <div class="cert-body">
+              <div class="cert-card-header">
+                <span class="cert-badge">ISRO &bull; IIRS</span>
+                <span class="cert-date">Sep 2026</span>
+              </div>
+              <h3 class="cert-title">IIRS / ISRO Outreach Program</h3>
+              <p class="cert-issuer">Indian Space Research Organisation (ISRO)</p>
+              <p class="cert-desc">Geospatial data technologies, satellite remote sensing, and aerospace computing.</p>
+              <div class="cert-footer">
+                <span class="cert-view-btn">
+                  <span>VIEW CREDENTIAL</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cert 7: Critical Thinking in AI Era -->
+          <div class="cert-card glass-panel" data-category="cloud enterprise" data-src="./certificates/Critical Thinking in the AI Era.pdf" data-title="Critical Thinking in the AI Era — Aryan Sharma" data-type="pdf">
+            <div class="cert-thumb-wrap">
+              <img src="./certificates/thumbs/Critical Thinking in the AI Era.png" alt="Critical Thinking in AI Era Preview" class="cert-thumb-img" loading="lazy" />
+              <div class="cert-thumb-overlay">
+                <span class="cert-expand-badge">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                  <span>EXPAND PREVIEW</span>
+                </span>
+              </div>
+            </div>
+            <div class="cert-body">
+              <div class="cert-card-header">
+                <span class="cert-badge">HP LIFE &bull; AI</span>
+                <span class="cert-date">Sep 2026</span>
+              </div>
+              <h3 class="cert-title">Critical Thinking in the AI Era</h3>
+              <p class="cert-issuer">HP LIFE Global Initiative</p>
+              <p class="cert-desc">AI decision frameworks, generative models, and ethical AI integration.</p>
+              <div class="cert-footer">
+                <span class="cert-view-btn">
+                  <span>VIEW CREDENTIAL</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cert 8: Mastercard Advisors -->
+          <div class="cert-card glass-panel" data-category="enterprise" data-src="./certificates/DZxgGgvMB6cEtEyJg_mfxGwGDp6WkQmtmTf_6aa04aaf1c45172ff2315001_1788894155236_completion_certificate.pdf" data-title="Mastercard Advisors Consulting — Aryan Sharma" data-type="pdf">
+            <div class="cert-thumb-wrap">
+              <img src="./certificates/thumbs/DZxgGgvMB6cEtEyJg_mfxGwGDp6WkQmtmTf_6aa04aaf1c45172ff2315001_1788894155236_completion_certificate.png" alt="Mastercard Advisors Consulting Preview" class="cert-thumb-img" loading="lazy" />
+              <div class="cert-thumb-overlay">
+                <span class="cert-expand-badge">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                  <span>EXPAND PREVIEW</span>
+                </span>
+              </div>
+            </div>
+            <div class="cert-body">
+              <div class="cert-card-header">
+                <span class="cert-badge">CONSULTING</span>
+                <span class="cert-date">Sep 2026</span>
+              </div>
+              <h3 class="cert-title">Advisors &amp; Consulting</h3>
+              <p class="cert-issuer">Mastercard</p>
+              <p class="cert-desc">Promotion optimization, digital analytics, and data-driven storytelling.</p>
+              <div class="cert-footer">
+                <span class="cert-view-btn">
+                  <span>VIEW CREDENTIAL</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cert 9: Full-Stack Development 101 -->
+          <div class="cert-card glass-panel" data-category="engineering" data-src="./certificates/10708670_11065418_1788879383362.pdf" data-title="Full-Stack Development 101 — Aryan Sharma" data-type="pdf">
+            <div class="cert-thumb-wrap">
+              <img src="./certificates/thumbs/10708670_11065418_1788879383362.png" alt="Full-Stack Development 101 Preview" class="cert-thumb-img" loading="lazy" />
+              <div class="cert-thumb-overlay">
+                <span class="cert-expand-badge">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                  <span>EXPAND PREVIEW</span>
+                </span>
+              </div>
+            </div>
+            <div class="cert-body">
+              <div class="cert-card-header">
+                <span class="cert-badge">FULL-STACK</span>
+                <span class="cert-date">Sep 2026</span>
+              </div>
+              <h3 class="cert-title">Full-Stack Development 101</h3>
+              <p class="cert-issuer">Scaler Academy (Code: 10708670)</p>
+              <p class="cert-desc">Modern web engineering, frontend architectures, RESTful APIs, and backend scalability.</p>
+              <div class="cert-footer">
+                <span class="cert-view-btn">
+                  <span>VIEW CREDENTIAL</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cert 10: SQL for Data Science -->
+          <div class="cert-card glass-panel" data-category="engineering cloud" data-src="./certificates/10709948_11065418_1788897986805.pdf" data-title="SQL for Data Science — Aryan Sharma" data-type="pdf">
+            <div class="cert-thumb-wrap">
+              <img src="./certificates/thumbs/10709948_11065418_1788897986805.png" alt="SQL for Data Science Preview" class="cert-thumb-img" loading="lazy" />
+              <div class="cert-thumb-overlay">
+                <span class="cert-expand-badge">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                  <span>EXPAND PREVIEW</span>
+                </span>
+              </div>
+            </div>
+            <div class="cert-body">
+              <div class="cert-card-header">
+                <span class="cert-badge">DATA &bull; SQL</span>
+                <span class="cert-date">Sep 2026</span>
+              </div>
+              <h3 class="cert-title">SQL for Data Science</h3>
+              <p class="cert-issuer">Scaler Academy (Code: 10709948)</p>
+              <p class="cert-desc">Relational database design, complex aggregations, query optimization, and data pipelines.</p>
+              <div class="cert-footer">
+                <span class="cert-view-btn">
+                  <span>VIEW CREDENTIAL</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section id="testimonials" class="section testimonials-section">
+      <div class="container">
+        <div class="section-tag">
+          <span class="mono-num">05</span>
+          <span class="tag-title">TESTIMONIALS</span>
+        </div>
+
+        <h2 class="section-title">What Clients Are Saying</h2>
+
+        <div class="testimonials-grid">
+          <!-- Card 1 -->
+          <div class="testimonial-card glass-panel">
+            <div class="quote-icon">&ldquo;</div>
+            <p class="testimonial-body">
+              Aryan created detailed 3D models and technical architectures for our medical devices. The precision and realism helped us secure investors and streamline our development.
+            </p>
+            <div class="testimonial-author">
+              <span class="author-name">DR. ANANYA KASHYAP</span>
+              <span class="author-role">MEDTECH VISUALS</span>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="testimonial-card glass-panel">
+            <div class="quote-icon">&ldquo;</div>
+            <p class="testimonial-body">
+              The 3D animations and UI interaction brought our product to life in ways we never thought possible. The craft was breathtaking and delivered ahead of schedule.
+            </p>
+            <div class="testimonial-author">
+              <span class="author-name">ROHIT VERMA</span>
+              <span class="author-role">PROTOSPHERE INNOVATIONS</span>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="testimonial-card glass-panel">
+            <div class="quote-icon">&ldquo;</div>
+            <p class="testimonial-body">
+              Outstanding 3D game assets and engineering support. The character models, shaders, and textures were beyond our expectations. Essential contributor to our alpha launch.
+            </p>
+            <div class="testimonial-author">
+              <span class="author-name">DEVRAJ MUKHERJEE</span>
+              <span class="author-role">APEX INTERACTIVE</span>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="testimonial-card glass-panel">
+            <div class="quote-icon">&ldquo;</div>
+            <p class="testimonial-body">
+              Aryan's unique 3D designs made our digital collection a massive hit. The attention to technical detail and visual precision made all the difference.
+            </p>
+            <div class="testimonial-author">
+              <span class="author-name">RHEA MEHTA</span>
+              <span class="author-role">METAFORM CREATIONS</span>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="testimonial-card glass-panel">
+            <div class="quote-icon">&ldquo;</div>
+            <p class="testimonial-body">
+              The 3D renders and interactive web systems produced for our campaign were incredible. It added a distinctive edge to our visual identity.
+            </p>
+            <div class="testimonial-author">
+              <span class="author-name">MEERA BANERJEE</span>
+              <span class="author-role">BOLDEDGE MARKETING</span>
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="testimonial-card glass-panel">
+            <div class="quote-icon">&ldquo;</div>
+            <p class="testimonial-body">
+              Aryan's work on our VR project was exceptional. Creative ingenuity, deep technical rigor, and flawless execution. Highly recommended!
+            </p>
+            <div class="testimonial-author">
+              <span class="author-name">CHIRAG SINGHAL</span>
+              <span class="author-role">REALMFORGE STUDIOS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="section contact-section">
+      <div class="container">
+        <div class="section-tag">
+          <span class="mono-num">06</span>
+          <span class="tag-title">GET IN TOUCH</span>
+        </div>
+
+        <div class="contact-layout">
+          <!-- Left Column -->
+          <div class="contact-info-col">
+            <h2 class="contact-heading">
+              LET'S<br>GET IN<br>TOUCH
+            </h2>
+
+            <div class="contact-direct">
+              <span class="direct-label">DIRECT INQUIRIES</span>
+              <a href="mailto:aaddisharmarkczw@gmail.com" class="direct-email">aaddisharmarkczw@gmail.com</a>
+              <a href="tel:+919728624010" class="direct-phone">+91 97286 24010</a>
+            </div>
+
+            <div class="contact-availability">
+              <span class="status-dot green"></span>
+              <span>Available for freelance, consulting &amp; engineering contracts</span>
+            </div>
+          </div>
+
+          <!-- Right Column / Interactive Form -->
+          <div class="contact-form-col">
+            <form id="contact-form" class="contact-form glass-panel">
+              <div class="form-group">
+                <label for="name">YOUR NAME</label>
+                <input type="text" id="name" name="name" placeholder="Jane Doe" required />
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="email">EMAIL ADDRESS</label>
+                  <input type="email" id="email" name="email" placeholder="jane@example.com" required />
+                </div>
+                <div class="form-group">
+                  <label for="phone">PHONE NUMBER</label>
+                  <input type="tel" id="phone" name="phone" placeholder="+91 97286 24010" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="message">PROJECT DETAILS</label>
+                <textarea id="message" name="message" rows="4" placeholder="Tell me about your project, timeline, and goals..." required></textarea>
+              </div>
+
+              <button type="submit" id="submit-btn" class="btn-submit">
+                <span>SEND MESSAGE</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+              </button>
+
+              <div id="form-feedback" class="form-feedback"></div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Giant Footer Title -->
+        <div class="footer-hero-brand">
+          <span class="giant-name">ARYAN SHARMA</span>
+        </div>
+
+        <!-- Comprehensive Footer -->
+        <footer class="site-footer">
+          <!-- Col 1: Social Links -->
+          <div class="footer-col">
+            <span class="footer-heading">SOCIAL HANDLES</span>
+            <ul class="footer-links">
+              <li>
+                <a href="https://www.instagram.com/aryansharma.dev/" target="_blank" rel="noopener" class="footer-social-link">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                  <span>Instagram</span>
+                  <span class="link-arrow">&nearr;</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/in/aryan-sharma11/" target="_blank" rel="noopener" class="footer-social-link">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                  <span>LinkedIn</span>
+                  <span class="link-arrow">&nearr;</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/aaddi1" target="_blank" rel="noopener" class="footer-social-link">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  <span>GitHub</span>
+                  <span class="link-arrow">&nearr;</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://x.com/aryan56710" target="_blank" rel="noopener" class="footer-social-link">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                  <span>X (Twitter)</span>
+                  <span class="link-arrow">&nearr;</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Col 2: Quick Navigation -->
+          <div class="footer-col">
+            <span class="footer-heading">NAVIGATION</span>
+            <ul class="footer-links">
+              <li><a href="#hero">Back to Top &uarr;</a></li>
+              <li><a href="#about">About Aryan</a></li>
+              <li><a href="#services">Services &amp; Capabilities</a></li>
+              <li><a href="#projects">Selected Projects</a></li>
+              <li><a href="#certificates">Verified Credentials</a></li>
+              <li><a href="#testimonials">Client Testimonials</a></li>
+              <li><a href="#contact">Get in Touch</a></li>
+            </ul>
+          </div>
+
+          <!-- Col 3: Direct Inquiries & Address -->
+          <div class="footer-col">
+            <span class="footer-heading">DIRECT INQUIRIES</span>
+            <ul class="footer-links">
+              <li><a href="mailto:aaddisharmarkczw@gmail.com" class="highlight-link">aaddisharmarkczw@gmail.com</a></li>
+              <li><a href="tel:+919728624010">+91 97286 24010</a></li>
+              <li class="address-text">Tundla, Uttar Pradesh 283204<br>India</li>
+            </ul>
+          </div>
+
+          <!-- Col 4: Legal Terms & IP Protections -->
+          <div class="footer-col footer-col-right">
+            <span class="footer-heading">LEGAL &amp; COPYRIGHT TERMS</span>
+            <p class="copyright">&copy; 2026 Aryan Sharma. All Rights Reserved.</p>
+            <div class="legal-notice-wrap">
+              <p class="legal-text">
+                All designs, 3D works, source code, and assets are protected under international copyright treaties. Unauthorized copying, distribution, scraping, or commercial exploitation is strictly prohibited.
+              </p>
+              <p class="legal-warning">
+                Violators are subject to severe civil statutory damages, criminal prosecution, and injunctive relief under applicable intellectual property laws.
+              </p>
+              <a href="./legal-notice.pdf" target="_blank" rel="noopener" id="legal-pdf-link" class="legal-pdf-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                <span>View Full License &amp; Copyright Notice (PDF) &nearr;</span>
+              </a>
+            </div>
+            <div class="footer-status-pill">
+              <span class="status-dot"></span>
+              <span>Available Worldwide &bull; Remote</span>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Certificate Viewer Modal -->
+  <div id="cert-modal" class="cert-modal" aria-hidden="true">
+    <div class="modal-backdrop"></div>
+    <div class="modal-window glass-panel">
+      <div class="modal-header">
+        <h3 id="modal-title" class="modal-title">Certificate</h3>
+        <div class="modal-actions">
+          <a id="modal-download" href="#" target="_blank" class="modal-action-btn" download>Open Original &nearr;</a>
+          <button id="modal-close" class="modal-close-btn" aria-label="Close modal">&times;</button>
+        </div>
+      </div>
+      <div id="modal-body" class="modal-body">
+        <!-- Injected image or iframe -->
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
