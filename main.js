@@ -1,4 +1,4 @@
-import Lenis from 'lenis';
+import Lenis from 'https://cdn.jsdelivr.net/npm/lenis@1.1.20/+esm';
 
 const TOTAL_FRAMES = 240;
 const FRAME_PATH = (index) => `./frames/frame_${String(index).padStart(6, '0')}.jpg`;
@@ -36,16 +36,29 @@ let isLoaderHidden = false;
 let needsForcedRedraw = false;
 
 // 1. Initialize Smooth Scroll with Lenis
-const lenis = new Lenis({
-  duration: 1.2,
-  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-  orientation: 'vertical',
-  gestureOrientation: 'vertical',
-  smoothWheel: true,
-  wheelMultiplier: 1.0,
-  touchMultiplier: 1.2,
-  syncTouch: true,
-});
+let lenis;
+try {
+  lenis = new Lenis({
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    orientation: 'vertical',
+    gestureOrientation: 'vertical',
+    smoothWheel: true,
+    wheelMultiplier: 1.0,
+    touchMultiplier: 1.2,
+    syncTouch: true,
+  });
+} catch (err) {
+  console.warn('Lenis fallback active:', err);
+  lenis = {
+    raf: () => {},
+    scrollTo: (target) => {
+      target?.scrollIntoView({ behavior: 'smooth' });
+    },
+    resize: () => {},
+    progress: 0,
+  };
+}
 
 // Smooth anchor scrolling
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
@@ -55,7 +68,11 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     const target = document.querySelector(href);
     if (target) {
       e.preventDefault();
-      lenis.scrollTo(target, { offset: -60, duration: 1.2 });
+      if (lenis && typeof lenis.scrollTo === 'function') {
+        lenis.scrollTo(target, { offset: -60, duration: 1.2 });
+      } else {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   });
 });
@@ -140,7 +157,7 @@ async function loadSingleFrame(index) {
           await img.decode();
         }
       } catch {
-        // Continue if decoding is interrupted
+        // Fallback
       }
       img.isReady = true;
       images[index] = img;
@@ -151,24 +168,33 @@ async function loadSingleFrame(index) {
 
     img.onload = onReady;
     img.onerror = () => {
+      loadedCount++;
+      updateLoaderProgress();
       resolve(null);
     };
   });
 }
 
-// 6. Update Loader UI
-function updateLoaderProgress() {
-  const percent = Math.round((loadedCount / TOTAL_FRAMES) * 100);
-  if (loaderPercent) loaderPercent.textContent = `${percent}%`;
-  if (loaderBar) loaderBar.style.width = `${percent}%`;
-
-  if (loadedCount >= Math.min(24, TOTAL_FRAMES) && !isLoaderHidden) {
-    if (loader) {
-      loader.classList.add('loaded');
-    }
+// 6. Update Loader UI with Instant Dismissal Protection
+function hideLoader() {
+  if (!isLoaderHidden && loader) {
+    loader.classList.add('loaded');
     isLoaderHidden = true;
   }
 }
+
+function updateLoaderProgress() {
+  const percent = Math.min(100, Math.round((loadedCount / TOTAL_FRAMES) * 100));
+  if (loaderPercent) loaderPercent.textContent = `${percent}%`;
+  if (loaderBar) loaderBar.style.width = `${percent}%`;
+
+  if (loadedCount >= Math.min(8, TOTAL_FRAMES)) {
+    hideLoader();
+  }
+}
+
+// Global safety timeout to ensure preloader is never stuck
+setTimeout(hideLoader, 1500);
 
 // 7. Concurrent Batch Preloading
 async function preloadFrames() {
@@ -195,11 +221,14 @@ async function preloadFrames() {
   });
 
   await Promise.all(workers);
+  hideLoader();
 }
 
 // 8. Animation and Render Loop
 function render(time) {
-  lenis.raf(time);
+  if (lenis && typeof lenis.raf === 'function') {
+    lenis.raf(time);
+  }
 
   // Update header blur style on scroll
   if (window.scrollY > 40) {
@@ -210,7 +239,7 @@ function render(time) {
 
   const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
   let progress = 0;
-  if (typeof lenis.progress === 'number' && !isNaN(lenis.progress)) {
+  if (lenis && typeof lenis.progress === 'number' && !isNaN(lenis.progress) && lenis.progress > 0) {
     progress = Math.max(0, Math.min(1, lenis.progress));
   } else if (maxScroll > 0) {
     progress = Math.max(0, Math.min(1, window.scrollY / maxScroll));
@@ -235,7 +264,7 @@ function render(time) {
   requestAnimationFrame(render);
 }
 
-// 10. Certificate Filter Tabs
+// 9. Certificate Filter Tabs
 const certFilterBtns = document.querySelectorAll('.cert-filter-btn');
 const certCards = document.querySelectorAll('.cert-card');
 
@@ -255,11 +284,13 @@ certFilterBtns.forEach((btn) => {
       }
     });
 
-    lenis.resize();
+    if (lenis && typeof lenis.resize === 'function') {
+      lenis.resize();
+    }
   });
 });
 
-// 11. Modal Handlers for Certificates & Legal Terms
+// 10. Modal Handlers for Certificates & Legal Terms
 function openModal(src, title, type) {
   if (!certModal) return;
   modalTitle.textContent = title || 'Document';
@@ -319,7 +350,7 @@ window.addEventListener('keydown', (e) => {
   }
 });
 
-// 12. Contact Form Interactive Submission
+// 11. Contact Form Interactive Submission
 contactForm?.addEventListener('submit', (e) => {
   e.preventDefault();
   const originalText = submitBtn.innerHTML;
