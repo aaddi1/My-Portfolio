@@ -12,14 +12,6 @@ const loaderBar = document.getElementById('loader-bar');
 const siteHeader = document.querySelector('.site-header');
 const scrollProgressBar = document.getElementById('scroll-progress-bar');
 
-// Custom Cursor Elements
-const cursorDot = document.getElementById('cursor-dot');
-const cursorRing = document.getElementById('cursor-ring');
-let mouseX = -100;
-let mouseY = -100;
-let ringX = -100;
-let ringY = -100;
-
 // Floating Connect Speed-Dial Hub
 const floatingConnectHub = document.getElementById('floating-connect-hub');
 const floatingConnectBtn = document.getElementById('floating-connect-btn');
@@ -48,17 +40,17 @@ let isFirstFrameReady = false;
 let isLoaderHidden = false;
 let needsForcedRedraw = false;
 
-// 1. Initialize Smooth Scroll with Lenis (Optimized for Zero Lag)
+// 1. Initialize Smooth Scroll with Lenis (Optimized for 120Hz/60Hz Performance)
 let lenis;
 try {
   lenis = new Lenis({
-    duration: 1.0,
+    duration: 0.9,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
     orientation: 'vertical',
     gestureOrientation: 'vertical',
     smoothWheel: true,
     wheelMultiplier: 0.95,
-    touchMultiplier: 1.5,
+    touchMultiplier: 1.4,
     syncTouch: true,
   });
 } catch (err) {
@@ -82,7 +74,7 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     if (target) {
       e.preventDefault();
       if (lenis && typeof lenis.scrollTo === 'function') {
-        lenis.scrollTo(target, { offset: -60, duration: 1.0 });
+        lenis.scrollTo(target, { offset: -60, duration: 0.9 });
       } else {
         target.scrollIntoView({ behavior: 'smooth' });
       }
@@ -90,9 +82,9 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   });
 });
 
-// 2. Resize Canvas Handling
+// 2. Resize Canvas Handling (Clamped DPR for Maximum Fillrate)
 function resizeCanvas() {
-  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
   const displayWidth = window.innerWidth;
   const displayHeight = window.innerHeight;
 
@@ -103,7 +95,7 @@ function resizeCanvas() {
     canvas.width = targetWidth;
     canvas.height = targetHeight;
     ctx.imageSmoothingEnabled = true;
-    ctx.imageSmoothingQuality = 'high';
+    ctx.imageSmoothingQuality = 'medium';
     needsForcedRedraw = true;
   }
 }
@@ -134,8 +126,6 @@ function drawFrame(img) {
     offsetY = 0;
   }
 
-  ctx.fillStyle = '#000000';
-  ctx.fillRect(0, 0, cWidth, cHeight);
   ctx.drawImage(img, offsetX, offsetY, renderWidth, renderHeight);
 }
 
@@ -237,7 +227,7 @@ async function preloadFrames() {
   hideLoader();
 }
 
-// 8. Animation & Render Loop (Optimized for 60fps/120fps)
+// 8. Animation & Render Loop (High Performance 120fps/60fps)
 function render(time) {
   if (lenis && typeof lenis.raf === 'function') {
     lenis.raf(time);
@@ -266,7 +256,7 @@ function render(time) {
   targetFrame = 1 + progress * (TOTAL_FRAMES - 1);
 
   // Smooth lerp frame interpolation
-  currentFrame += (targetFrame - currentFrame) * 0.22;
+  currentFrame += (targetFrame - currentFrame) * 0.2;
   const clampedFrame = Math.max(1, Math.min(TOTAL_FRAMES, currentFrame));
   const roundedFrame = Math.round(clampedFrame);
 
@@ -279,35 +269,10 @@ function render(time) {
     }
   }
 
-  // Smooth Custom Cursor Ring Lerp
-  if (cursorRing && mouseX > -50) {
-    ringX += (mouseX - ringX) * 0.18;
-    ringY += (mouseY - ringY) * 0.18;
-    cursorRing.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%)`;
-  }
-
   requestAnimationFrame(render);
 }
 
-// 9. Custom Cursor Movement & Hover Effects
-window.addEventListener('mousemove', (e) => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-  if (cursorDot) {
-    cursorDot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
-  }
-});
-
-document.addEventListener('mouseover', (e) => {
-  const target = e.target;
-  if (target && (target.closest('a') || target.closest('button') || target.closest('.glass-panel') || target.closest('.cert-card') || target.closest('.project-card') || target.closest('.dial-item'))) {
-    cursorRing?.classList.add('cursor-hover');
-  } else {
-    cursorRing?.classList.remove('cursor-hover');
-  }
-});
-
-// 10. Floating Speed-Dial Connect Hub Toggle
+// 9. Floating Speed-Dial Connect Hub Toggle
 floatingConnectBtn?.addEventListener('click', (e) => {
   e.stopPropagation();
   floatingConnectHub?.classList.toggle('active');
@@ -325,7 +290,7 @@ window.addEventListener('keydown', (e) => {
   }
 });
 
-// 11. Certificate Filter Tabs
+// 10. Certificate Filter Tabs
 const certFilterBtns = document.querySelectorAll('.cert-filter-btn');
 const certCards = document.querySelectorAll('.cert-card');
 
@@ -351,7 +316,7 @@ certFilterBtns.forEach((btn) => {
   });
 });
 
-// 12. Modal Handlers for Certificates & Legal Terms
+// 11. Modal Handlers for Certificates & Legal Terms
 function openModal(src, title, type) {
   if (!certModal) return;
   modalTitle.textContent = title || 'Document';
@@ -411,7 +376,7 @@ window.addEventListener('keydown', (e) => {
   }
 });
 
-// 13. Contact Form Interactive Submission
+// 12. Contact Form Interactive Submission
 contactForm?.addEventListener('submit', (e) => {
   e.preventDefault();
   const originalText = submitBtn.innerHTML;
