@@ -684,22 +684,22 @@ button {
   color: #ffffff;
 }
 
-/* Bottom: Giant ARYAN Name positioned on the left bottom corner directly above Bio Statement & Specs */
+/* Bottom: Giant ARYAN Name positioned at the BOTTOM RIGHT corner below avatar jaw */
 .hero-bottom-wrap {
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: flex-end;
+  align-items: flex-end;
   width: 100%;
   margin-top: auto;
   padding-top: 36px;
 }
 
 .hero-bottom-content {
-  max-width: 580px;
+  max-width: 520px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
+  align-items: flex-end;
+  text-align: right;
   gap: 12px;
 }
 
@@ -712,7 +712,7 @@ button {
   text-transform: uppercase;
   color: #ffffff;
   margin-bottom: 6px;
-  text-align: left;
+  text-align: right;
 }
 
 .hero-bio-statement {
@@ -721,20 +721,20 @@ button {
   line-height: 1.75;
   letter-spacing: 0.08em;
   color: rgba(255, 255, 255, 0.9);
-  text-align: left;
+  text-align: right;
 }
 
 .hero-bio-specs {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: flex-end;
   gap: 8px;
   font-family: var(--font-mono);
   font-size: 10.5px;
   color: var(--text-dim);
   letter-spacing: 0.12em;
   margin-top: 2px;
-  text-align: left;
+  text-align: right;
 }
 
 .spec-tag {
@@ -2215,15 +2215,26 @@ button {
     font-size: clamp(28px, 7vw, 44px);
     margin-bottom: 8px;
   }
+  .hero-bottom-wrap {
+    justify-content: flex-start;
+    padding-top: 24px;
+  }
+  .hero-bottom-content {
+    align-items: flex-start;
+    text-align: left;
+    max-width: 100%;
+  }
   .hero-giant-name {
     font-size: clamp(48px, 14vw, 84px);
     margin-bottom: 10px;
-  }
-  .hero-bottom-wrap {
-    padding-top: 24px;
+    text-align: left;
   }
   .hero-bio-statement {
     font-size: 13px;
+    text-align: left;
+  }
+  .hero-bio-specs {
+    justify-content: flex-start;
   }
   .floating-connect-hub {
     bottom: 20px;
