@@ -10,12 +10,12 @@
   --glass-specular: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.03) 40%, rgba(255, 255, 255, 0.005) 100%);
   --glass-border: rgba(255, 255, 255, 0.14);
   --glass-border-hover: rgba(255, 255, 255, 0.32);
-  --glass-blur: blur(32px) saturate(210%) brightness(108%);
+  --glass-blur: blur(22px) saturate(190%) brightness(108%);
   
   --glass-inner-shadow: inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.35), inset 0 0 24px 0 rgba(255, 255, 255, 0.02);
   --glass-inner-shadow-hover: inset 0 1px 2px 0 rgba(255, 255, 255, 0.5), inset 0 0 32px 0 rgba(255, 255, 255, 0.06);
-  --glass-drop-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.65);
-  --glass-drop-shadow-hover: 0 32px 80px -16px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.18);
+  --glass-drop-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.6);
+  --glass-drop-shadow-hover: 0 28px 70px -12px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(255, 255, 255, 0.18);
   
   --text-main: #ffffff;
   --text-muted: #94a3b8;
@@ -56,6 +56,53 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Magnetic Developer Cursor */
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-green);
+  box-shadow: 0 0 12px var(--accent-green);
+  pointer-events: none;
+  z-index: 1000000;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease;
+}
+
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(16, 185, 129, 0.5);
+  background: rgba(16, 185, 129, 0.04);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  pointer-events: none;
+  z-index: 999999;
+  transform: translate(-50%, -50%);
+  transition: width 0.25s var(--ease-out), height 0.25s var(--ease-out), border-color 0.25s ease, background 0.25s ease, opacity 0.3s ease;
+}
+
+.cursor-ring.cursor-hover {
+  width: 54px;
+  height: 54px;
+  border-color: rgba(6, 182, 212, 0.85);
+  background: rgba(6, 182, 212, 0.12);
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
+}
+
+@media (hover: none) {
+  .cursor-dot, .cursor-ring {
+    display: none !important;
+  }
 }
 
 a {
@@ -156,7 +203,7 @@ button {
 }
 
 /* ==========================================================================
-   FIXED 3D BACKGROUND CANVAS
+   FIXED 3D BACKGROUND CANVAS (GPU COMPOSITED FOR ZERO SCROLL LAG)
    ========================================================================== */
 .canvas-container {
   position: fixed;
@@ -170,6 +217,9 @@ button {
   z-index: 0;
   pointer-events: none;
   background-color: #000000;
+  transform: translateZ(0);
+  will-change: transform;
+  contain: paint layout;
 }
 
 #animation-canvas {
@@ -181,8 +231,8 @@ button {
 .canvas-overlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.6) 100%),
-              linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.05) 40%, rgba(0,0,0,0.6) 100%);
+  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.12) 0%, rgba(0, 0, 0, 0.65) 100%),
+              linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.02) 40%, rgba(0,0,0,0.65) 100%);
   pointer-events: none;
 }
 
@@ -595,7 +645,7 @@ button {
 }
 
 /* ==========================================================================
-   HERO SECTION
+   HERO SECTION & REVEAL ANIMATIONS
    ========================================================================== */
 .hero-section {
   min-height: 100vh;
@@ -605,6 +655,35 @@ button {
   justify-content: space-between;
   padding-top: 140px;
   padding-bottom: 40px;
+}
+
+.hero-reveal-item {
+  opacity: 0;
+  transform: translateY(28px);
+  animation: heroRevealUp 1.0s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-top-badge.hero-reveal-item { animation-delay: 0.1s; }
+.hero-headline.hero-reveal-item { animation-delay: 0.25s; }
+.hero-meta-grid.hero-reveal-item { animation-delay: 0.45s; }
+.client-marquee-wrapper.hero-reveal-item {
+  opacity: 0;
+  transform: translateY(16px);
+  animation: heroRevealFade 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.65s forwards;
+}
+
+@keyframes heroRevealUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroRevealFade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .hero-container {
@@ -654,41 +733,15 @@ button {
 }
 
 .hero-bio {
-  max-width: 460px;
+  max-width: 520px;
 }
 
 .hero-bio p {
   font-family: var(--font-mono);
-  font-size: 13px;
-  line-height: 1.7;
+  font-size: 14px;
+  line-height: 1.8;
   letter-spacing: 0.08em;
-  color: rgba(255, 255, 255, 0.85);
-}
-
-.hero-actions {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.btn-ghost {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.1em;
-  color: var(--text-muted);
-  padding: 10px 18px;
-  border-radius: 9999px;
-  border: 1px solid transparent;
-  transition: all 0.25s ease;
-}
-
-.btn-ghost:hover {
-  color: var(--text-main);
-  background: rgba(255, 255, 255, 0.06);
-  border-color: var(--glass-border);
+  color: rgba(255, 255, 255, 0.9);
 }
 
 /* Infinite Marquee */
@@ -1790,6 +1843,184 @@ button {
   color: var(--text-dim);
   width: fit-content;
 }
+
+/* ==========================================================================
+   INTERACTIVE FLOATING SPEED-DIAL CONNECT HUB
+   ========================================================================== */
+.floating-connect-hub {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 99998;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.floating-connect-btn {
+  position: relative;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: rgba(12, 16, 24, 0.85);
+  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.05) 100%);
+  backdrop-filter: blur(20px) saturate(200%);
+  -webkit-backdrop-filter: blur(20px) saturate(200%);
+  border: 1.5px solid rgba(16, 185, 129, 0.6);
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.4), 0 12px 36px rgba(0, 0, 0, 0.6), 0 0 24px rgba(16, 185, 129, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.35s var(--ease-out);
+}
+
+.floating-connect-btn:hover {
+  transform: scale(1.08);
+  border-color: #10b981;
+  box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.6), 0 16px 44px rgba(0, 0, 0, 0.75), 0 0 32px rgba(16, 185, 129, 0.6);
+}
+
+.floating-ping-ring {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid var(--accent-green);
+  opacity: 0.8;
+  animation: pingRing 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+  pointer-events: none;
+}
+
+@keyframes pingRing {
+  0% { transform: scale(1); opacity: 0.8; }
+  75%, 100% { transform: scale(1.45); opacity: 0; }
+}
+
+.btn-icon-swap {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-icon-swap .icon-phone,
+.btn-icon-swap .icon-close {
+  position: absolute;
+  transition: all 0.3s var(--ease-out);
+}
+
+.btn-icon-swap .icon-close {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.6);
+}
+
+.floating-connect-hub.active .btn-icon-swap .icon-phone {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.6);
+}
+
+.floating-connect-hub.active .btn-icon-swap .icon-close {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+.floating-connect-hub.active .floating-ping-ring {
+  display: none;
+}
+
+/* Speed-dial items */
+.speed-dial-menu {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+  pointer-events: none;
+}
+
+.dial-item {
+  position: relative;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(14, 18, 26, 0.88);
+  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.02) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.3), 0 8px 24px rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  opacity: 0;
+  transform: translateY(20px) scale(0.6);
+  transition: all 0.3s var(--ease-out);
+  pointer-events: none;
+}
+
+.dial-item:hover {
+  transform: scale(1.15) !important;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.dial-whatsapp:hover { color: #25D366; border-color: #25D366; box-shadow: 0 0 20px rgba(37, 211, 102, 0.4); }
+.dial-linkedin:hover { color: #0A66C2; border-color: #0A66C2; box-shadow: 0 0 20px rgba(10, 102, 194, 0.4); }
+.dial-instagram:hover { color: #E4405F; border-color: #E4405F; box-shadow: 0 0 20px rgba(228, 64, 95, 0.4); }
+.dial-x:hover { color: #ffffff; border-color: #ffffff; box-shadow: 0 0 20px rgba(255, 255, 255, 0.4); }
+.dial-github:hover { color: #06b6d4; border-color: #06b6d4; box-shadow: 0 0 20px rgba(6, 182, 212, 0.4); }
+.dial-phone:hover { color: #10b981; border-color: #10b981; box-shadow: 0 0 20px rgba(16, 185, 129, 0.4); }
+
+/* Tooltip on dial item */
+.dial-item::before {
+  content: attr(data-label);
+  position: absolute;
+  right: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%) translateX(6px);
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: rgba(10, 12, 18, 0.92);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  color: #ffffff;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+}
+
+.dial-item:hover::before {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) translateX(0);
+}
+
+.floating-connect-hub.active .speed-dial-menu {
+  pointer-events: auto;
+}
+
+.floating-connect-hub.active .dial-item {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.floating-connect-hub.active .dial-item:nth-child(1) { transition-delay: 0.02s; }
+.floating-connect-hub.active .dial-item:nth-child(2) { transition-delay: 0.06s; }
+.floating-connect-hub.active .dial-item:nth-child(3) { transition-delay: 0.10s; }
+.floating-connect-hub.active .dial-item:nth-child(4) { transition-delay: 0.14s; }
+.floating-connect-hub.active .dial-item:nth-child(5) { transition-delay: 0.18s; }
+.floating-connect-hub.active .dial-item:nth-child(6) { transition-delay: 0.22s; }
 
 /* ==========================================================================
    MODAL DIALOG (APPLE CLEAR LIQUID GLASS)

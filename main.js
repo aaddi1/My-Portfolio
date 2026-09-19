@@ -12,6 +12,18 @@ const loaderBar = document.getElementById('loader-bar');
 const siteHeader = document.querySelector('.site-header');
 const scrollProgressBar = document.getElementById('scroll-progress-bar');
 
+// Custom Cursor Elements
+const cursorDot = document.getElementById('cursor-dot');
+const cursorRing = document.getElementById('cursor-ring');
+let mouseX = -100;
+let mouseY = -100;
+let ringX = -100;
+let ringY = -100;
+
+// Floating Connect Speed-Dial Hub
+const floatingConnectHub = document.getElementById('floating-connect-hub');
+const floatingConnectBtn = document.getElementById('floating-connect-btn');
+
 // Modal Elements
 const certModal = document.getElementById('cert-modal');
 const modalTitle = document.getElementById('modal-title');
@@ -36,16 +48,16 @@ let isFirstFrameReady = false;
 let isLoaderHidden = false;
 let needsForcedRedraw = false;
 
-// 1. Initialize Smooth Scroll with Lenis
+// 1. Initialize Smooth Scroll with Lenis (Optimized for Zero Lag)
 let lenis;
 try {
   lenis = new Lenis({
-    duration: 1.2,
+    duration: 1.0,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
     orientation: 'vertical',
     gestureOrientation: 'vertical',
     smoothWheel: true,
-    wheelMultiplier: 1.0,
+    wheelMultiplier: 0.95,
     touchMultiplier: 1.5,
     syncTouch: true,
   });
@@ -70,7 +82,7 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     if (target) {
       e.preventDefault();
       if (lenis && typeof lenis.scrollTo === 'function') {
-        lenis.scrollTo(target, { offset: -60, duration: 1.2 });
+        lenis.scrollTo(target, { offset: -60, duration: 1.0 });
       } else {
         target.scrollIntoView({ behavior: 'smooth' });
       }
@@ -176,7 +188,7 @@ async function loadSingleFrame(index) {
   });
 }
 
-// 6. Update Loader UI with Instant Dismissal Protection
+// 6. Update Loader UI
 function hideLoader() {
   if (!isLoaderHidden && loader) {
     loader.classList.add('loaded');
@@ -194,7 +206,7 @@ function updateLoaderProgress() {
   }
 }
 
-// Global safety timeout to ensure preloader is never stuck
+// Global safety timeout
 setTimeout(hideLoader, 1500);
 
 // 7. Concurrent Batch Preloading
@@ -225,7 +237,7 @@ async function preloadFrames() {
   hideLoader();
 }
 
-// 8. Animation and Render Loop
+// 8. Animation & Render Loop (Optimized for 60fps/120fps)
 function render(time) {
   if (lenis && typeof lenis.raf === 'function') {
     lenis.raf(time);
@@ -246,14 +258,14 @@ function render(time) {
     progress = Math.max(0, Math.min(1, window.scrollY / maxScroll));
   }
 
-  // Update top scroll progress bar
+  // Top scroll progress bar
   if (scrollProgressBar) {
     scrollProgressBar.style.width = `${progress * 100}%`;
   }
 
   targetFrame = 1 + progress * (TOTAL_FRAMES - 1);
 
-  // Inertial lerp interpolation for silky animation scrub
+  // Smooth lerp frame interpolation
   currentFrame += (targetFrame - currentFrame) * 0.22;
   const clampedFrame = Math.max(1, Math.min(TOTAL_FRAMES, currentFrame));
   const roundedFrame = Math.round(clampedFrame);
@@ -267,10 +279,53 @@ function render(time) {
     }
   }
 
+  // Smooth Custom Cursor Ring Lerp
+  if (cursorRing && mouseX > -50) {
+    ringX += (mouseX - ringX) * 0.18;
+    ringY += (mouseY - ringY) * 0.18;
+    cursorRing.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%)`;
+  }
+
   requestAnimationFrame(render);
 }
 
-// 9. Certificate Filter Tabs
+// 9. Custom Cursor Movement & Hover Effects
+window.addEventListener('mousemove', (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+  if (cursorDot) {
+    cursorDot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
+  }
+});
+
+document.addEventListener('mouseover', (e) => {
+  const target = e.target;
+  if (target && (target.closest('a') || target.closest('button') || target.closest('.glass-panel') || target.closest('.cert-card') || target.closest('.project-card') || target.closest('.dial-item'))) {
+    cursorRing?.classList.add('cursor-hover');
+  } else {
+    cursorRing?.classList.remove('cursor-hover');
+  }
+});
+
+// 10. Floating Speed-Dial Connect Hub Toggle
+floatingConnectBtn?.addEventListener('click', (e) => {
+  e.stopPropagation();
+  floatingConnectHub?.classList.toggle('active');
+});
+
+document.addEventListener('click', (e) => {
+  if (floatingConnectHub?.classList.contains('active') && !floatingConnectHub.contains(e.target)) {
+    floatingConnectHub.classList.remove('active');
+  }
+});
+
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    floatingConnectHub?.classList.remove('active');
+  }
+});
+
+// 11. Certificate Filter Tabs
 const certFilterBtns = document.querySelectorAll('.cert-filter-btn');
 const certCards = document.querySelectorAll('.cert-card');
 
@@ -296,7 +351,7 @@ certFilterBtns.forEach((btn) => {
   });
 });
 
-// 10. Modal Handlers for Certificates & Legal Terms
+// 12. Modal Handlers for Certificates & Legal Terms
 function openModal(src, title, type) {
   if (!certModal) return;
   modalTitle.textContent = title || 'Document';
@@ -356,7 +411,7 @@ window.addEventListener('keydown', (e) => {
   }
 });
 
-// 11. Contact Form Interactive Submission
+// 13. Contact Form Interactive Submission
 contactForm?.addEventListener('submit', (e) => {
   e.preventDefault();
   const originalText = submitBtn.innerHTML;
