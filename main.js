@@ -290,9 +290,25 @@ window.addEventListener('keydown', (e) => {
   }
 });
 
-// 10. Certificate Filter Tabs
+// 10. Certificate Filter Tabs & Show More Expansion
 const certFilterBtns = document.querySelectorAll('.cert-filter-btn');
 const certCards = document.querySelectorAll('.cert-card');
+const certsSection = document.getElementById('certificates');
+const toggleCertsBtn = document.getElementById('toggle-certs-btn');
+const toggleCertsText = document.getElementById('toggle-certs-text');
+const certExpandWrap = document.querySelector('.cert-expand-wrap');
+let isCertsExpanded = false;
+
+toggleCertsBtn?.addEventListener('click', () => {
+  isCertsExpanded = !isCertsExpanded;
+  certsSection?.classList.toggle('expanded', isCertsExpanded);
+  if (toggleCertsText) {
+    toggleCertsText.textContent = isCertsExpanded ? 'SHOW LESS' : 'SHOW ALL CERTIFICATES & BADGES (15+)';
+  }
+  if (lenis && typeof lenis.resize === 'function') {
+    lenis.resize();
+  }
+});
 
 certFilterBtns.forEach((btn) => {
   btn.addEventListener('click', () => {
@@ -301,14 +317,25 @@ certFilterBtns.forEach((btn) => {
 
     const filter = btn.getAttribute('data-filter');
 
-    certCards.forEach((card) => {
-      const categories = card.getAttribute('data-category') || '';
-      if (filter === 'all' || categories.includes(filter)) {
+    if (filter === 'all') {
+      if (certExpandWrap) certExpandWrap.style.display = 'flex';
+      certCards.forEach((card) => {
         card.classList.remove('hidden');
-      } else {
-        card.classList.add('hidden');
-      }
-    });
+      });
+    } else {
+      // In specific category view, show all matching items without collapsing
+      if (certExpandWrap) certExpandWrap.style.display = 'none';
+      certCards.forEach((card) => {
+        const categories = card.getAttribute('data-category') || '';
+        if (categories.includes(filter)) {
+          card.classList.remove('hidden');
+          card.style.display = 'flex';
+        } else {
+          card.classList.add('hidden');
+          card.style.display = 'none';
+        }
+      });
+    }
 
     if (lenis && typeof lenis.resize === 'function') {
       lenis.resize();

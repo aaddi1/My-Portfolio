@@ -1337,7 +1337,62 @@ button {
 }
 
 .cert-card.hidden {
-  display: none;
+  display: none !important;
+}
+
+/* Initial 6 Visible Limit & Show More Expansion */
+.cert-card.cert-collapsed-item {
+  display: none !important;
+}
+
+#certificates.expanded .cert-card.cert-collapsed-item {
+  display: flex !important;
+  animation: certFadeIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes certFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.cert-expand-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 44px;
+  width: 100%;
+}
+
+.toggle-certs-btn {
+  padding: 12px 30px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  gap: 10px;
+  cursor: pointer;
+  box-shadow: inset 0 1px 1.5px rgba(255, 255, 255, 0.3), 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.toggle-certs-btn:hover {
+  background: #ffffff;
+  color: #000000;
+  border-color: #ffffff;
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+.toggle-certs-btn svg {
+  transition: transform 0.3s var(--ease-out);
+}
+
+#certificates.expanded .toggle-certs-btn svg {
+  transform: rotate(180deg);
 }
 
 .cert-card-header {
