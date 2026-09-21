@@ -432,7 +432,7 @@ toggleCertsBtn?.addEventListener('click', () => {
   isCertsExpanded = !isCertsExpanded;
   certsSection?.classList.toggle('expanded', isCertsExpanded);
   if (toggleCertsText) {
-    toggleCertsText.textContent = isCertsExpanded ? 'SHOW LESS' : 'SHOW ALL CERTIFICATES & BADGES (17+)';
+    toggleCertsText.textContent = isCertsExpanded ? 'VIEW LESS' : 'VIEW MORE (17+)';
   }
   if (lenis && typeof lenis.resize === 'function') {
     lenis.resize();
