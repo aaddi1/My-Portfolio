@@ -4,22 +4,22 @@
 :root {
   --bg-primary: #000000;
   
-  /* High-Performance Apple Clear Liquid Glass Tokens (Optimized for 120Hz/60Hz) */
-  --glass-base: rgba(12, 16, 24, 0.45);
-  --glass-base-hover: rgba(18, 24, 36, 0.6);
-  --glass-specular: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.025) 40%, rgba(255, 255, 255, 0.005) 100%);
-  --glass-border: rgba(255, 255, 255, 0.14);
-  --glass-border-hover: rgba(255, 255, 255, 0.32);
-  --glass-blur: blur(14px) saturate(170%) brightness(108%);
+  /* High-Performance Apple Clear Liquid Glass Tokens (Enhanced Contrast & Readability) */
+  --glass-base: rgba(10, 14, 22, 0.72);
+  --glass-base-hover: rgba(14, 18, 28, 0.84);
+  --glass-specular: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.025) 40%, rgba(0, 0, 0, 0.15) 100%);
+  --glass-border: rgba(255, 255, 255, 0.16);
+  --glass-border-hover: rgba(255, 255, 255, 0.35);
+  --glass-blur: blur(20px) saturate(160%) brightness(100%);
   
-  --glass-inner-shadow: inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.32), inset 0 0 20px 0 rgba(255, 255, 255, 0.02);
-  --glass-inner-shadow-hover: inset 0 1px 2px 0 rgba(255, 255, 255, 0.45), inset 0 0 28px 0 rgba(255, 255, 255, 0.05);
-  --glass-drop-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.55);
-  --glass-drop-shadow-hover: 0 24px 60px -12px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.18);
+  --glass-inner-shadow: inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.28), inset 0 0 24px 0 rgba(0, 0, 0, 0.4);
+  --glass-inner-shadow-hover: inset 0 1px 2px 0 rgba(255, 255, 255, 0.4), inset 0 0 28px 0 rgba(0, 0, 0, 0.5);
+  --glass-drop-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.75);
+  --glass-drop-shadow-hover: 0 24px 60px -12px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.22);
   
   --text-main: #ffffff;
-  --text-muted: #94a3b8;
-  --text-dim: #64748b;
+  --text-muted: #cbd5e1;
+  --text-dim: #94a3b8;
   
   --accent-green: #10b981;
   --accent-cyan: #06b6d4;
@@ -207,8 +207,8 @@ input, textarea, button, select, a {
 .canvas-overlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.12) 0%, rgba(0, 0, 0, 0.65) 100%),
-              linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.02) 40%, rgba(0,0,0,0.65) 100%);
+  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.72) 100%),
+              linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.05) 40%, rgba(0,0,0,0.72) 100%);
   pointer-events: none;
 }
 
@@ -2403,9 +2403,9 @@ input, textarea, button, select, a {
 /* Small Tablets & Large Phones (max-width: 768px) */
 @media (max-width: 768px) {
   :root {
-    --glass-base: rgba(12, 16, 24, 0.65);
-    --glass-base-hover: rgba(16, 22, 34, 0.75);
-    --glass-blur: blur(10px);
+    --glass-base: rgba(10, 14, 22, 0.82);
+    --glass-base-hover: rgba(14, 18, 28, 0.90);
+    --glass-blur: blur(12px);
   }
 
   .site-header {
