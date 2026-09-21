@@ -4,21 +4,21 @@
 :root {
   --bg-primary: #000000;
   
-  /* High-Performance Apple Clear Liquid Glass Tokens (Enhanced Contrast & Readability) */
-  --glass-base: rgba(10, 14, 22, 0.72);
-  --glass-base-hover: rgba(14, 18, 28, 0.84);
-  --glass-specular: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.025) 40%, rgba(0, 0, 0, 0.15) 100%);
-  --glass-border: rgba(255, 255, 255, 0.16);
-  --glass-border-hover: rgba(255, 255, 255, 0.35);
-  --glass-blur: blur(20px) saturate(160%) brightness(100%);
+  /* Apple VisionOS Clear Liquid Glass Tokens (Luminous Transparency & Specular Refraction) */
+  --glass-base: rgba(12, 16, 26, 0.36);
+  --glass-base-hover: rgba(16, 22, 36, 0.50);
+  --glass-specular: linear-gradient(135deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.04) 35%, rgba(255, 255, 255, 0.005) 60%, rgba(255, 255, 255, 0.08) 100%);
+  --glass-border: rgba(255, 255, 255, 0.18);
+  --glass-border-hover: rgba(255, 255, 255, 0.42);
+  --glass-blur: blur(28px) saturate(210%) brightness(110%);
   
-  --glass-inner-shadow: inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.28), inset 0 0 24px 0 rgba(0, 0, 0, 0.4);
-  --glass-inner-shadow-hover: inset 0 1px 2px 0 rgba(255, 255, 255, 0.4), inset 0 0 28px 0 rgba(0, 0, 0, 0.5);
-  --glass-drop-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.75);
-  --glass-drop-shadow-hover: 0 24px 60px -12px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.22);
+  --glass-inner-shadow: inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.48), inset 0 -1px 1px 0 rgba(255, 255, 255, 0.08), inset 0 0 24px 0 rgba(255, 255, 255, 0.03);
+  --glass-inner-shadow-hover: inset 0 2px 1.5px 0 rgba(255, 255, 255, 0.70), inset 0 -1px 1px 0 rgba(255, 255, 255, 0.12), inset 0 0 32px 0 rgba(255, 255, 255, 0.06);
+  --glass-drop-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.55), 0 0 1px rgba(255, 255, 255, 0.15);
+  --glass-drop-shadow-hover: 0 24px 60px -12px rgba(0, 0, 0, 0.75), 0 0 24px rgba(255, 255, 255, 0.08), 0 0 0 1px rgba(255, 255, 255, 0.28);
   
   --text-main: #ffffff;
-  --text-muted: #cbd5e1;
+  --text-muted: #e2e8f0;
   --text-dim: #94a3b8;
   
   --accent-green: #10b981;
@@ -207,8 +207,8 @@ input, textarea, button, select, a {
 .canvas-overlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.72) 100%),
-              linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.05) 40%, rgba(0,0,0,0.72) 100%);
+  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.55) 100%),
+              linear-gradient(180deg, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.01) 40%, rgba(0,0,0,0.58) 100%);
   pointer-events: none;
 }
 
@@ -222,6 +222,8 @@ input, textarea, button, select, a {
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
   border: 1px solid var(--glass-border);
+  border-top-color: rgba(255, 255, 255, 0.38);
+  border-left-color: rgba(255, 255, 255, 0.26);
   border-radius: var(--radius-squircle);
   box-shadow: var(--glass-inner-shadow), var(--glass-drop-shadow);
   transition: background-color 0.35s var(--ease-out), border-color 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out), transform 0.35s var(--ease-out);
@@ -232,6 +234,8 @@ input, textarea, button, select, a {
 .glass-panel:hover {
   background-color: var(--glass-base-hover);
   border-color: var(--glass-border-hover);
+  border-top-color: rgba(255, 255, 255, 0.58);
+  border-left-color: rgba(255, 255, 255, 0.42);
   box-shadow: var(--glass-inner-shadow-hover), var(--glass-drop-shadow-hover);
 }
 
@@ -1018,12 +1022,14 @@ input, textarea, button, select, a {
   font-weight: 400;
   line-height: 1.5;
   color: #ffffff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
 }
 
 .sub-text {
   font-size: 15px;
   line-height: 1.7;
   color: var(--text-muted);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 }
 
 .about-footer {
@@ -1119,6 +1125,7 @@ input, textarea, button, select, a {
   font-size: 15px;
   color: var(--text-muted);
   line-height: 1.6;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 }
 
 .service-tags {
@@ -1252,6 +1259,7 @@ input, textarea, button, select, a {
   color: var(--text-muted);
   line-height: 1.6;
   margin-bottom: 20px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 }
 
 .project-tags-row {
@@ -1546,6 +1554,7 @@ input, textarea, button, select, a {
   color: var(--text-muted);
   line-height: 1.5;
   margin-bottom: 20px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 }
 
 .cert-footer {
@@ -1607,8 +1616,9 @@ input, textarea, button, select, a {
 .testimonial-body {
   font-size: 14px;
   line-height: 1.65;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.95);
   margin-bottom: 24px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 }
 
 .testimonial-author {
@@ -2343,7 +2353,9 @@ input, textarea, button, select, a {
 /* Tablets (max-width: 1024px) */
 @media (max-width: 1024px) {
   :root {
-    --glass-blur: blur(12px) saturate(160%) brightness(105%);
+    --glass-base: rgba(14, 18, 28, 0.44);
+    --glass-base-hover: rgba(18, 24, 38, 0.58);
+    --glass-blur: blur(22px) saturate(190%) brightness(108%);
     --radius-squircle: 20px;
   }
 
@@ -2403,9 +2415,9 @@ input, textarea, button, select, a {
 /* Small Tablets & Large Phones (max-width: 768px) */
 @media (max-width: 768px) {
   :root {
-    --glass-base: rgba(10, 14, 22, 0.82);
-    --glass-base-hover: rgba(14, 18, 28, 0.90);
-    --glass-blur: blur(12px);
+    --glass-base: rgba(14, 18, 28, 0.55);
+    --glass-base-hover: rgba(18, 24, 38, 0.68);
+    --glass-blur: blur(16px) saturate(180%);
   }
 
   .site-header {
