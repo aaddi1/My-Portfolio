@@ -299,9 +299,11 @@ input, textarea, button, select, a {
   width: 38px;
   height: 38px;
   border-radius: 50%;
-  padding: 1.5px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.08));
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  padding: 2px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.3) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: inset 0 1px 1.5px rgba(255, 255, 255, 0.6), 0 6px 18px rgba(0, 0, 0, 0.5), 0 0 12px rgba(255, 255, 255, 0.15);
 }
 
 .logo-avatar-img {
@@ -375,15 +377,17 @@ input, textarea, button, select, a {
   padding: 10px 22px;
   min-height: 42px;
   border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.08);
-  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.02) 100%);
-  border: 1px solid var(--glass-border);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.3), 0 8px 24px rgba(0, 0, 0, 0.3);
+  background: rgba(16, 22, 34, 0.45);
+  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.05) 40%, rgba(255, 255, 255, 0.01) 70%, rgba(255, 255, 255, 0.1) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-top-color: rgba(255, 255, 255, 0.55);
+  border-left-color: rgba(255, 255, 255, 0.38);
+  backdrop-filter: blur(24px) saturate(200%) brightness(110%);
+  -webkit-backdrop-filter: blur(24px) saturate(200%) brightness(110%);
+  box-shadow: inset 0 1.5px 1px rgba(255, 255, 255, 0.5), inset 0 -1px 1px rgba(255, 255, 255, 0.1), 0 8px 24px rgba(0, 0, 0, 0.4);
   font-family: var(--font-mono);
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.08em;
   color: var(--text-main);
   transition: all 0.3s var(--ease-out);
@@ -391,10 +395,12 @@ input, textarea, button, select, a {
 }
 
 .btn-pill:hover {
-  background: rgba(255, 255, 255, 0.18);
-  border-color: var(--glass-border-hover);
+  background: rgba(22, 30, 48, 0.65);
+  border-color: rgba(255, 255, 255, 0.45);
+  border-top-color: rgba(255, 255, 255, 0.75);
+  border-left-color: rgba(255, 255, 255, 0.55);
   transform: translateY(-2px);
-  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.4), 0 12px 32px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 2px 1.5px rgba(255, 255, 255, 0.7), inset 0 -1px 1px rgba(255, 255, 255, 0.15), 0 12px 32px rgba(0, 0, 0, 0.6), 0 0 18px rgba(255, 255, 255, 0.1);
 }
 
 .btn-pill:active {
@@ -1768,22 +1774,31 @@ input, textarea, button, select, a {
   gap: 12px;
   padding: 16px 28px;
   min-height: 50px;
-  background: #ffffff;
-  color: #000000;
+  background: rgba(255, 255, 255, 0.12);
+  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.08) 40%, rgba(255, 255, 255, 0.02) 70%, rgba(255, 255, 255, 0.15) 100%);
+  backdrop-filter: blur(28px) saturate(220%) brightness(115%);
+  -webkit-backdrop-filter: blur(28px) saturate(220%) brightness(115%);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-top-color: rgba(255, 255, 255, 0.7);
+  border-left-color: rgba(255, 255, 255, 0.5);
+  color: #ffffff;
   border-radius: 9999px;
   font-family: var(--font-mono);
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.1em;
-  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0 2px 1.5px rgba(255, 255, 255, 0.65), inset 0 -1px 1px rgba(255, 255, 255, 0.15), 0 12px 32px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 255, 255, 0.12);
   transition: all 0.3s var(--ease-out);
   margin-top: 8px;
 }
 
 .btn-submit:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 36px rgba(255, 255, 255, 0.35);
-  background: #f8fafc;
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.55);
+  border-top-color: rgba(255, 255, 255, 0.9);
+  box-shadow: inset 0 2px 2px rgba(255, 255, 255, 0.85), inset 0 -1px 1px rgba(255, 255, 255, 0.2), 0 16px 44px rgba(0, 0, 0, 0.75), 0 0 28px rgba(255, 255, 255, 0.22);
+  color: #ffffff;
 }
 
 .btn-submit:active {
@@ -2008,24 +2023,28 @@ input, textarea, button, select, a {
   width: 58px;
   height: 58px;
   border-radius: 50%;
-  background: rgba(12, 16, 24, 0.88);
-  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.05) 100%);
-  backdrop-filter: blur(20px) saturate(200%);
-  -webkit-backdrop-filter: blur(20px) saturate(200%);
-  border: 1.5px solid rgba(16, 185, 129, 0.6);
-  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.4), 0 12px 36px rgba(0, 0, 0, 0.6), 0 0 24px rgba(16, 185, 129, 0.35);
+  background: rgba(14, 18, 28, 0.40);
+  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.08) 40%, rgba(255, 255, 255, 0.01) 70%, rgba(255, 255, 255, 0.15) 100%);
+  backdrop-filter: blur(28px) saturate(220%) brightness(115%);
+  -webkit-backdrop-filter: blur(28px) saturate(220%) brightness(115%);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-top-color: rgba(255, 255, 255, 0.65);
+  border-left-color: rgba(255, 255, 255, 0.45);
+  box-shadow: inset 0 2px 2px 0 rgba(255, 255, 255, 0.65), inset 0 -1px 2px 0 rgba(255, 255, 255, 0.15), inset 0 0 20px 0 rgba(16, 185, 129, 0.25), 0 16px 40px rgba(0, 0, 0, 0.65), 0 0 24px rgba(16, 185, 129, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
   color: #ffffff;
   cursor: pointer;
-  transition: transform 0.35s var(--ease-out), border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.35s var(--ease-out), border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
 
 .floating-connect-btn:hover {
   transform: scale(1.08);
-  border-color: #10b981;
-  box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.6), 0 16px 44px rgba(0, 0, 0, 0.75), 0 0 32px rgba(16, 185, 129, 0.6);
+  background: rgba(18, 24, 38, 0.55);
+  border-color: rgba(16, 185, 129, 0.8);
+  border-top-color: rgba(255, 255, 255, 0.85);
+  box-shadow: inset 0 2px 3px 0 rgba(255, 255, 255, 0.85), inset 0 -1px 2px 0 rgba(255, 255, 255, 0.2), inset 0 0 24px 0 rgba(16, 185, 129, 0.45), 0 20px 48px rgba(0, 0, 0, 0.75), 0 0 36px rgba(16, 185, 129, 0.65);
 }
 
 .floating-connect-btn:active {
@@ -2077,12 +2096,14 @@ input, textarea, button, select, a {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: rgba(14, 18, 26, 0.92);
-  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.02) 100%);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--glass-border);
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.3), 0 8px 24px rgba(0, 0, 0, 0.6);
+  background: rgba(14, 18, 28, 0.45);
+  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.05) 45%, rgba(255, 255, 255, 0.01) 100%);
+  backdrop-filter: blur(24px) saturate(200%) brightness(112%);
+  -webkit-backdrop-filter: blur(24px) saturate(200%) brightness(112%);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-top-color: rgba(255, 255, 255, 0.55);
+  border-left-color: rgba(255, 255, 255, 0.38);
+  box-shadow: inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.5), inset 0 -1px 1px 0 rgba(255, 255, 255, 0.1), 0 10px 28px rgba(0, 0, 0, 0.6);
   display: flex;
   align-items: center;
   justify-content: center;
