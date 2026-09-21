@@ -1,4 +1,4 @@
-import Lenis from 'lenis';
+import Lenis from 'https://cdn.jsdelivr.net/npm/lenis@1.1.20/+esm';
 
 const TOTAL_FRAMES = 240;
 const FRAME_PATH = (index) => `./frames/frame_${String(index).padStart(6, '0')}.jpg`;
@@ -62,23 +62,27 @@ let targetProgress = 0;
 
 try {
   const isTouch = isTouchDevice();
-  lenis = new Lenis({
-    duration: isTouch ? 0.45 : 0.75,
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    orientation: 'vertical',
-    gestureOrientation: 'vertical',
-    smoothWheel: true,
-    wheelMultiplier: 1.0,
-    touchMultiplier: 1.0,
-    syncTouch: false,
-    autoRaf: false,
-  });
+  if (typeof Lenis === 'function') {
+    lenis = new Lenis({
+      duration: isTouch ? 0.45 : 0.75,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 1.0,
+      touchMultiplier: 1.0,
+      syncTouch: false,
+      autoRaf: false,
+    });
 
-  lenis.on('scroll', (e) => {
-    if (typeof e.progress === 'number' && !isNaN(e.progress)) {
-      targetProgress = Math.max(0, Math.min(1, e.progress));
-    }
-  });
+    lenis.on('scroll', (e) => {
+      if (typeof e.progress === 'number' && !isNaN(e.progress)) {
+        targetProgress = Math.max(0, Math.min(1, e.progress));
+      }
+    });
+  } else {
+    throw new Error('Lenis class unavailable');
+  }
 } catch (err) {
   console.warn('Lenis fallback active:', err);
   lenis = {
@@ -273,14 +277,14 @@ function updateLoaderProgress() {
   if (loaderPercent) loaderPercent.textContent = `${percent}%`;
   if (loaderBar) loaderBar.style.width = `${percent}%`;
 
-  // Hide loader early once initial keyframes are ready for instant responsiveness
-  if (loadedCount >= Math.min(12, TOTAL_FRAMES)) {
+  // Hide loader immediately once the first frame is ready
+  if (loadedCount >= 1) {
     hideLoader();
   }
 }
 
-// Global safety timeout to ensure loader never hangs on slow cellular networks
-setTimeout(hideLoader, 1200);
+// Global safety timeout to ensure loader never hangs
+setTimeout(hideLoader, 800);
 
 // 7. Progressive Concurrent Batch Preloading (Prioritized Keyframe Loading)
 async function preloadFrames() {
