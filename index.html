@@ -2,7 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <title>Aryan Sharma — 3D Designer & Creative Engineer</title>
   <meta name="description" content="Aryan Sharma is a certified web developer and 3D creative engineer crafting interactive 3D digital experiences and full-stack platforms." />
   
@@ -76,6 +80,63 @@
       <a href="#contact" class="btn-pill header-cta">
         <span>CONTACT ME</span>
       </a>
+
+      <!-- Mobile Menu Hamburger Button -->
+      <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+
+    <!-- Mobile Liquid Glass Navigation Drawer -->
+    <div id="mobile-nav-drawer" class="mobile-nav-drawer glass-panel" aria-hidden="true">
+      <div class="mobile-nav-links">
+        <a href="#about" class="mobile-nav-link">
+          <span class="mobile-nav-num">01</span>
+          <span class="mobile-nav-text">ABOUT</span>
+        </a>
+        <a href="#services" class="mobile-nav-link">
+          <span class="mobile-nav-num">02</span>
+          <span class="mobile-nav-text">SERVICES</span>
+        </a>
+        <a href="#projects" class="mobile-nav-link">
+          <span class="mobile-nav-num">03</span>
+          <span class="mobile-nav-text">PROJECTS</span>
+        </a>
+        <a href="#certificates" class="mobile-nav-link">
+          <span class="mobile-nav-num">04</span>
+          <span class="mobile-nav-text">CERTIFICATES</span>
+        </a>
+        <a href="#testimonials" class="mobile-nav-link">
+          <span class="mobile-nav-num">05</span>
+          <span class="mobile-nav-text">TESTIMONIALS</span>
+        </a>
+        <a href="#contact" class="mobile-nav-link">
+          <span class="mobile-nav-num">06</span>
+          <span class="mobile-nav-text">CONTACT</span>
+        </a>
+      </div>
+      <div class="mobile-nav-footer">
+        <a href="#contact" class="btn-pill mobile-nav-cta">
+          <span>GET IN TOUCH</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <div class="mobile-nav-socials">
+          <a href="https://www.linkedin.com/in/aryan-sharma11/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.64c-.9 0-1.63.73-1.63 1.63 0 .9.73 1.63 1.63 1.63.9 0 1.63-.73 1.63-1.63 0-.9-.73-1.63-1.63-1.63z"/></svg>
+          </a>
+          <a href="https://github.com/aaddi1" target="_blank" rel="noopener" aria-label="GitHub">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/aryansharma.dev/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://x.com/aryan56710" target="_blank" rel="noopener" aria-label="X (Twitter)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -107,7 +168,11 @@
       <div class="client-marquee-wrapper hero-reveal-item">
         <div class="client-marquee">
           <div class="marquee-track">
+            <span class="marquee-item">IBM SKILLSBUILD</span>
+            <span class="marquee-divider">&bull;</span>
             <span class="marquee-item">AWS CLOUD</span>
+            <span class="marquee-divider">&bull;</span>
+            <span class="marquee-item">ORACLE JAVA</span>
             <span class="marquee-divider">&bull;</span>
             <span class="marquee-item">SCALER ACADEMY</span>
             <span class="marquee-divider">&bull;</span>
@@ -131,7 +196,11 @@
             <span class="marquee-divider">&bull;</span>
           </div>
           <div class="marquee-track" aria-hidden="true">
+            <span class="marquee-item">IBM SKILLSBUILD</span>
+            <span class="marquee-divider">&bull;</span>
             <span class="marquee-item">AWS CLOUD</span>
+            <span class="marquee-divider">&bull;</span>
+            <span class="marquee-item">ORACLE JAVA</span>
             <span class="marquee-divider">&bull;</span>
             <span class="marquee-item">SCALER ACADEMY</span>
             <span class="marquee-divider">&bull;</span>
@@ -183,7 +252,7 @@
               </div>
               <div class="fact-item">
                 <span class="fact-label">EXPERIENCE</span>
-                <span class="fact-value">15+ Certifications &bull; 5+ Projects &bull; 4 Job Simulations</span>
+                <span class="fact-value">17+ Certifications &bull; 5+ Projects &bull; 4 Job Simulations</span>
               </div>
               <div class="fact-item">
                 <span class="fact-label">CORE FOCUS</span>
@@ -255,7 +324,7 @@
               </div>
               <div class="stats-row">
                 <div class="stat-box">
-                  <span class="stat-number">15+</span>
+                  <span class="stat-number">17+</span>
                   <span class="stat-label">Certificates &bull; Badges</span>
                 </div>
                 <div class="stat-box">
@@ -536,7 +605,7 @@
 
         <!-- Filter Tabs -->
         <div class="cert-filters">
-          <button class="cert-filter-btn active" data-filter="all">ALL (15)</button>
+          <button class="cert-filter-btn active" data-filter="all">ALL (17)</button>
           <button class="cert-filter-btn" data-filter="ai">AI &amp; CLAUDE</button>
           <button class="cert-filter-btn" data-filter="cloud">CLOUD &amp; GOOGLE</button>
           <button class="cert-filter-btn" data-filter="enterprise">ENTERPRISE</button>
@@ -572,7 +641,63 @@
             </div>
           </div>
 
-          <!-- Cert 2: Claude Code 101 Badge -->
+          <!-- Cert 2: Oracle Java Learning Explorer Badge -->
+          <div class="cert-card glass-panel" data-category="engineering enterprise" data-src="./certificates/oracle_java_badge.png" data-title="Oracle Java Learning Explorer — Aryan Sharma" data-type="image">
+            <div class="cert-thumb-wrap" style="background: #ffffff; display: flex; align-items: center; justify-content: center; padding: 12px;">
+              <img src="./certificates/thumbs/oracle_java_badge.png" alt="Oracle Java Learning Explorer Badge Preview" class="cert-thumb-img" style="width: 100%; height: 100%; object-fit: contain;" loading="lazy" />
+              <div class="cert-thumb-overlay">
+                <span class="cert-expand-badge">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                  <span>EXPAND PREVIEW</span>
+                </span>
+              </div>
+            </div>
+            <div class="cert-body">
+              <div class="cert-card-header">
+                <span class="cert-badge">ORACLE &bull; JAVA</span>
+                <span class="cert-date">Sep 2026</span>
+              </div>
+              <h3 class="cert-title">Oracle Java Explorer</h3>
+              <p class="cert-issuer">Oracle University</p>
+              <p class="cert-desc">Core Java programming fundamentals, object-oriented concepts, JVM runtime principles, and enterprise application logic.</p>
+              <div class="cert-footer">
+                <span class="cert-view-btn">
+                  <span>VIEW BADGE</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cert 3: IBM Artificial Intelligence Fundamentals Certificate -->
+          <div class="cert-card glass-panel" data-category="ai engineering enterprise" data-src="./certificates/ibm_ai_fundamentals.pdf" data-title="Artificial Intelligence Fundamentals — IBM SkillsBuild & Aryan Sharma" data-type="pdf">
+            <div class="cert-thumb-wrap">
+              <img src="./certificates/thumbs/ibm_ai_fundamentals.png" alt="IBM SkillsBuild AI Fundamentals Certificate Preview" class="cert-thumb-img" loading="lazy" />
+              <div class="cert-thumb-overlay">
+                <span class="cert-expand-badge">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                  <span>EXPAND PREVIEW</span>
+                </span>
+              </div>
+            </div>
+            <div class="cert-body">
+              <div class="cert-card-header">
+                <span class="cert-badge">IBM &bull; SKILLSBUILD</span>
+                <span class="cert-date">Sep 2026 &bull; ID: ea9a30e3</span>
+              </div>
+              <h3 class="cert-title">AI Fundamentals</h3>
+              <p class="cert-issuer">IBM SkillsBuild (Credly Verified)</p>
+              <p class="cert-desc">Official certification in Artificial Intelligence foundations, neural architectures, machine learning models, and enterprise AI ethics.</p>
+              <div class="cert-footer">
+                <span class="cert-view-btn">
+                  <span>VIEW CERTIFICATE</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cert 3: Claude Code 101 Badge -->
           <div class="cert-card glass-panel" data-category="ai cloud engineering" data-src="./certificates/claude_code_101.png" data-title="Claude Code 101 Badge — Aryan Sharma" data-type="image">
             <div class="cert-thumb-wrap">
               <img src="./certificates/thumbs/claude_code_101.png" alt="Claude Code 101 Badge Preview" class="cert-thumb-img" loading="lazy" />
@@ -968,7 +1093,7 @@
         <!-- Interactive Show More / Show Less Toggle Button -->
         <div class="cert-expand-wrap">
           <button id="toggle-certs-btn" class="btn-pill toggle-certs-btn">
-            <span id="toggle-certs-text">SHOW ALL CERTIFICATES &amp; BADGES (15+)</span>
+            <span id="toggle-certs-text">SHOW ALL CERTIFICATES &amp; BADGES (17+)</span>
             <svg id="toggle-certs-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
           </button>
         </div>
@@ -1093,23 +1218,23 @@
             <form id="contact-form" class="contact-form glass-panel">
               <div class="form-group">
                 <label for="name">YOUR NAME</label>
-                <input type="text" id="name" name="name" placeholder="Jane Doe" required />
+                <input type="text" id="name" name="name" placeholder="Jane Doe" autocomplete="name" required />
               </div>
 
               <div class="form-row">
                 <div class="form-group">
                   <label for="email">EMAIL ADDRESS</label>
-                  <input type="email" id="email" name="email" placeholder="jane@example.com" required />
+                  <input type="email" id="email" name="email" placeholder="jane@example.com" inputmode="email" autocomplete="email" required />
                 </div>
                 <div class="form-group">
                   <label for="phone">PHONE NUMBER</label>
-                  <input type="tel" id="phone" name="phone" placeholder="+91 97286 24010" />
+                  <input type="tel" id="phone" name="phone" placeholder="+91 97286 24010" inputmode="tel" autocomplete="tel" />
                 </div>
               </div>
 
               <div class="form-group">
                 <label for="message">PROJECT DETAILS</label>
-                <textarea id="message" name="message" rows="4" placeholder="Tell me about your project, timeline, and goals..." required></textarea>
+                <textarea id="message" name="message" rows="4" placeholder="Tell me about your project, timeline, and goals..." required spellcheck="true"></textarea>
               </div>
 
               <button type="submit" id="submit-btn" class="btn-submit">

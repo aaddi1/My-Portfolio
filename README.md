@@ -28,7 +28,7 @@
 [![Design](https://img.shields.io/badge/Design-Apple%20Clear%20Liquid%20Glass-white?style=flat-square&logo=apple)](https://github.com/aaddi1/My-Portfolio)
 [![Vite](https://img.shields.io/badge/Bundler-Vite%206-646CFF?style=flat-square&logo=vite&logoColor=white)](https://vitejs.dev/)
 [![Status](https://img.shields.io/badge/Status-Production%20Ready-emerald?style=flat-square)](https://aaddi1.github.io/My-Portfolio/)
-[![License](https://img.shields.io/badge/License-Proprietary%20All%20Rights%20Reserved-red?style=flat-square)](./public/legal-notice.pdf)
+[![License](https://img.shields.io/badge/License-Proprietary%20All%20Rights%20Reserved-red?style=flat-square)](./LICENSE)
 
 </div>
 
@@ -57,7 +57,7 @@ Experience the interactive 3D scroll canvas and Apple Clear Liquid Glass system:
 │  │  • About Me (Framed Avatar + Experience Telemetry)               │  │
 │  │  • 5x Services Grid (3D Modeling, Shaders, Animations, CAD)      │  │
 │  │  • 4x Featured Repositories (NEXUS, Cinder House, Advocate, Star)│  │
-│  │  • 10x Verified Credentials (With Filter Tabs & Modal Lightbox)  │  │
+│  │  • 16x Verified Credentials (With Filter Tabs & Modal Lightbox)  │  │
 │  │  • Verified Client Reviews & Interactive Contact Form            │  │
 │  │  • 4-Column Footer + Official 2-Page Legal Notice (PDF)          │  │
 │  └──────────────────────────────────────────────────────────────────┘  │
@@ -90,8 +90,8 @@ Experience the interactive 3D scroll canvas and Apple Clear Liquid Glass system:
 - **Hover Micro-Interactions:** Elevation lift and dynamic specular sheen on cards and badges.
 
 ### 📜 3. Verified Credentials & Interactive Lightbox
-- **10 Verified Certifications:** Features AWS Cloud Developer, BCG X Generative AI, Bank of America Global Markets, Deloitte Cybersecurity, ISRO / IIRS Outreach, HP LIFE, Mastercard Consulting, and Scaler Academy.
-- **Category Filter Tabs:** Instant sorting by `ALL (10)`, `CLOUD & AI`, `ENTERPRISE`, and `ENGINEERING`.
+- **17 Verified Certifications & Badges:** Features IBM SkillsBuild (AI Fundamentals), Oracle Java Learning Explorer, Google Play Academy, Claude Academy (101, CLI & In Action), Microsoft Blazor, AWS Cloud Developer, BCG X Generative AI, Bank of America Global Markets, Deloitte Cybersecurity, ISRO / IIRS Outreach, HP LIFE, Mastercard Consulting, and Scaler Academy.
+- **Category Filter Tabs:** Instant sorting by `ALL (17)`, `AI & CLAUDE`, `CLOUD & GOOGLE`, `ENTERPRISE`, and `ENGINEERING`.
 - **Generated PNG Document Previews:** Instant visual previews with zoom expand triggers and modal lightbox support for PDF inspection.
 
 ### 📂 4. Featured GitHub Repositories
@@ -154,9 +154,9 @@ npm run preview
 
 All visual designs, 3D frame sequences, shader programs, layout frameworks, and source code in this repository are the exclusive proprietary property of **Aryan Sharma**.
 
-- **Proprietary Notice:** © 2026 Aryan Sharma. All Rights Reserved.
+- **Proprietary Notice:** © 2026 Aryan Sharma. All Rights Reserved. See [**`LICENSE`**](./LICENSE).
 - **Prohibitions:** Unauthorized copying, commercial replication, automated scraping, or AI model ingestion is strictly prohibited and subject to civil statutory damages (up to $150,000 USD per work) and criminal prosecution under applicable intellectual property statutes.
-- **Official Legal Notice:** Read the complete 2-page legal document: [**`public/legal-notice.pdf`**](./public/legal-notice.pdf)
+- **Official Legal Deed:** Read the complete 2-page registered legal document: [**`public/legal-notice.pdf`**](./public/legal-notice.pdf)
 
 ---
 
